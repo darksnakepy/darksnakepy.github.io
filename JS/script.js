@@ -12,7 +12,8 @@ function getMonthDays(){
     }
 }
 
-function getGrade(){
+function getGrade() 
+{
     let inputDati = parseFloat(prompt("Inserisci il cazzo di voto: "))
     if (inputDati < 6)
     {
@@ -35,4 +36,22 @@ function getGrade(){
     }
 }
 
-function 
+function convertToMS() // converte i minuti e ore in millisecondi
+{
+    inp = parseInt(prompt("Converti ore e minuti [1: Ore | 2: Minuti]"))
+    switch(inp){
+        case 1:
+            hour = parseInt(prompt("Numero di ore da convertire in millisecondi"))
+        case 2:
+            min = parseInt(prompt("Numero di minuti da convertire in millisecondi"))
+            result = min * 60000
+            console.log(result)
+    }
+}
+
+function convertToC() // converte i gradi F° in C°
+{
+
+} 
+
+convertToMS()
