@@ -1,9 +1,8 @@
 function getMonthDays(month){
-    
-    if (month === "febbraio"){
+    if (month.toLowerCase() === "febbraio"){
         return "28 giorni"
     }
-    else if (month === "novembre" || month === "aprile" || month === "giugno" || month === "settembre"){
+    else if (month.toLowerCase() === "novembre" || month.toLowerCase() === "aprile" || month.toLowerCase() === "giugno" || month.toLowerCase() === "settembre"){
         return "30 giorni"
     }
     else{
@@ -31,17 +30,27 @@ function getGrade(grade) {
 }
 
 function convertToMS(hour, min){
-    return ("Ore in ms: "+ hour * 60 * 60000) + (" Minuti in millisecondi" + min * 60000)
+    return ("Ore in ms: "+ hour * 60 * 60000) + (" Minuti in ms: " + min * 60000)
 }
 
 function convertToC(temp){
-    return (temp -32.0) * 5.0 / 9.0
+    return "Gradi in Centigradi: " + (temp -32.0) * 5.0 / 9.0
 } 
 
+function timezone(timezone, hour, min) {
+    let datetime = luxon.DateTime.fromObject({hour: inputHour, minute: inputMinute}, {zone: luxon.DateTime.now().zoneName});
+    switch (timezone) {
+        case "new york":
+            return dt.setZone("New york");
+        case "tokyo":
+            return dt.setZone("Asia/Tokyo");
+        case "moscow":
+            return dt.setZone("Europe/Moscow");
+    }
+    return -1;
+}
 
-function 
-
-let month = parseInt(prompt("Inserisci un mese: "))
+let month = prompt("Inserisci un mese: ")
 console.log(getMonthDays(month))
 
 let grade = parseFloat(prompt("Inserisci un voto: "))
@@ -51,4 +60,5 @@ hour = parseInt(prompt("Inserisci un'ora: ")) // converte in millisceondi
 min = parseInt(prompt("Inserisci un minuto "));
 console.log(convertToMS(hour, min));
 
-
+let temp = parseFloat(prompt("Inserisci i gradi in Farenheit: "));
+console.log(convertToC(temp))
