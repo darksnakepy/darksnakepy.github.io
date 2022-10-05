@@ -1,57 +1,54 @@
-function getMonthDays(){
-    let inputDati = prompt("Inserisci un mese: ")
-    let a = inputDati.toLowerCase()
-    if (a === "febbraio"){
-        console.log(a + "=" + " 28 giorni")
+function getMonthDays(month){
+    
+    if (month === "febbraio"){
+        return "28 giorni"
     }
-    else if (a === "novembre" || a === "aprile" || a === "giugno" || a === "settembre"){
-        console.log(a + "=" + " 30 giorni")
-    }
-    else{
-        console.log(a + "=" + " 31 giorni")
-    }
-}
-
-function getGrade() 
-{
-    let inputDati = parseFloat(prompt("Inserisci il cazzo di voto: "))
-    if (inputDati < 6)
-    {
-        console.log("Voto: " + inputDati + " = Negativo")
-    }
-    else if (inputDati >= 6 && inputDati <= 6.9)
-    {
-        console.log("Voto: " + inputDati + " = Sufficiente")
-    }
-    else if (inputDati >= 6 && inputDati <= 7.9)
-    {
-        console.log("Voto: " + inputDati + " = Discreto")
-    }
-    else if (inputDati >= 8)
-    {
-        console.log("Voto: " + inputDati + " = buono")
+    else if (month === "novembre" || month === "aprile" || month === "giugno" || month === "settembre"){
+        return "30 giorni"
     }
     else{
-        console.log("Reinserisci il numero")
+        return "31 giorni"
     }
 }
 
-function convertToMS() // converte i minuti e ore in millisecondi
-{
-    inp = parseInt(prompt("Converti ore e minuti [1: Ore | 2: Minuti]"))
-    switch(inp){
-        case 1:
-            hour = parseInt(prompt("Numero di ore da convertire in millisecondi"))
-        case 2:
-            min = parseInt(prompt("Numero di minuti da convertire in millisecondi"))
-            result = min * 60000
-            console.log(result)
+function getGrade(grade) {
+    if (grade < 6)
+    {
+        return "Insufficiente"
+    }
+    else if (grade >= 6 && grade <= 6.9)
+    {
+        return "Sufficiente"
+    }
+    else if (grade >= 6 && grade <= 7.9)
+    {
+        return "Discreto"
+    }
+    else if (grade >= 8)
+    {
+        return "buono"
     }
 }
 
-function convertToC() // converte i gradi F° in C°
-{
+function convertToMS(hour, min){
+    return ("Ore in ms: "+ hour * 60 * 60000) + (" Minuti in millisecondi" + min * 60000)
+}
 
+function convertToC(temp){
+    return (temp -32.0) * 5.0 / 9.0
 } 
 
-convertToMS()
+
+function 
+
+let month = parseInt(prompt("Inserisci un mese: "))
+console.log(getMonthDays(month))
+
+let grade = parseFloat(prompt("Inserisci un voto: "))
+console.log(getGrade(grade))
+
+hour = parseInt(prompt("Inserisci un'ora: ")) // converte in millisceondi
+min = parseInt(prompt("Inserisci un minuto "));
+console.log(convertToMS(hour, min));
+
+
