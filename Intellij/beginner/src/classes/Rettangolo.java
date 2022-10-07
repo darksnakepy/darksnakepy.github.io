@@ -34,7 +34,7 @@ public class Rettangolo {
     }
 
 
-    public float Calcolo()
+    public float CalcoloRettangolo()
     {
         float b, h, area;
         Rettangolo r = new Rettangolo();

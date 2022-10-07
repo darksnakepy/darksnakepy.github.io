@@ -31,7 +31,7 @@ public class Figures {
                 break;
             case 3:
                 Rettangolo r = new Rettangolo();
-                r.Calcolo();
+                r.CalcoloRettangolo();
                 break;
             default:
                 System.out.println("Wrong choice.");
