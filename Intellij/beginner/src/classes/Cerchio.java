@@ -15,7 +15,7 @@ public class Cerchio {
         }
         else{
             System.out.println("Il raggio non puo essere minore di 0");
-            return Read();
+            return 0;
         }
     }
 

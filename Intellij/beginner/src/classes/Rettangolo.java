@@ -14,7 +14,7 @@ public class Rettangolo {
         }
         else{
             System.out.println("La base non puo essere minore di 0");
-            return readBase();
+            return 0;
         }
     }
 
@@ -28,11 +28,10 @@ public class Rettangolo {
         }
         else{
             System.out.println("L'altezza non puo essere minore di 0");
-            return readAltezza();
+            return 0;
         }
 
     }
-
 
     public float CalcoloRettangolo()
     {
