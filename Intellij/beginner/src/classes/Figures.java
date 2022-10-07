@@ -15,28 +15,29 @@ public class Figures {
         return choice;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         int choice;
         Figures fg = new Figures();
         choice = fg.menu();
-        do{
-            switch(choice)
-            {
-                case 1:
-                    System.out.println("OK");
-                    Cerchio c = new Cerchio();
-                    break;
-                case 2:
-                    Triangolo t = new Triangolo();
-                    break;
-                case 3:
-                    Rettangolo r = new Rettangolo();
-                    break;
-
-                default:
-                    System.out.println("Wrong choice.");
-                    break;
-            }
-        } while(choice!=0);
+        switch (choice) {
+            case 1:
+                Cerchio c = new Cerchio();
+                c.CalcoloCerchio();
+                break;
+            case 2:
+                Triangolo t = new Triangolo();
+                t.CalcoloTriangolo();
+                break;
+            case 3:
+                Rettangolo r = new Rettangolo();
+                r.Calcolo();
+                break;
+            default:
+                System.out.println("Wrong choice.");
+                break;
+        }
     }
 }
+
+
