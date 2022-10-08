@@ -30,12 +30,13 @@ function getGrade(grade) {
 }
 
 function convertToMS(hour, min){
-    return ("Ore in ms: "+ hour * 60 * 60000) + (" Minuti in ms: " + min * 60000)
+    return `Ore in ms: ${hour * 60 * 60000}, Minuti in ms: ${min * 60000}`
 }
 
 function convertToC(temp){
-    return "Gradi in Centigradi: " + (temp -32.0) * 5.0 / 9.0
+    return `Gradi in Centigradi: ${(temp -32.0) * 5.0 / 9.0}`
 } 
+
 
 function timezoneInput(hour, min)
 {
@@ -67,3 +68,5 @@ console.log(convertToMS(hour, min));
 
 let temp = parseFloat(prompt("Inserisci i gradi in Farenheit: "));
 console.log(convertToC(temp))
+
+
