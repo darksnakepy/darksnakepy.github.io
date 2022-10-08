@@ -37,18 +37,23 @@ function convertToC(temp){
     return "Gradi in Centigradi: " + (temp -32.0) * 5.0 / 9.0
 } 
 
-function timezone(timezone, hour, min) {
-    let datetime = luxon.DateTime.fromObject({hour: inputHour, minute: inputMinute}, {zone: luxon.DateTime.now().zoneName});
-    switch (timezone) {
-        case "new york":
-            return dt.setZone("New york");
-        case "tokyo":
-            return dt.setZone("Asia/Tokyo");
-        case "moscow":
-            return dt.setZone("Europe/Moscow");
+function timezoneInput(hour, min)
+{
+    let diffNY = hour - 6, c = 24 - hour, diffTokyo = hour + 7
+    let resultnY = (hour + c + diffNY) % 24
+    let resultTokyo = (hour + c + diffTokyo) % 24
+    if(hour <= 23 && min <= 59)
+    {
+    return `A new york sono le ${resultnY}:${min} A tokyo sono le ${resultTokyo}:${min}`
     }
-    return -1;
+    else{
+        return "Scelta sbagliata!"
+    }
 }
+
+let hour = parseInt(prompt("Inserisci l'ora da convertire: ")) // converte in millisceondi
+let min = parseInt(prompt("Inserisci un minuto: "))
+console.log(timezoneInput(hour, min))
 
 let month = prompt("Inserisci un mese: ")
 console.log(getMonthDays(month))
