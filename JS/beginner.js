@@ -45,7 +45,7 @@ function timezoneInput(hour, min)
     let resultTokyo = (hour + c + diffTokyo) % 24
     if(hour <= 23 && min <= 59)
     {
-    return `A new york sono le ${resultnY}:${min} A tokyo sono le ${resultTokyo}:${min}`
+        return `A new york sono le ${resultnY}:${min} A tokyo sono le ${resultTokyo}:${min}`
     }
     else{
         return "Scelta sbagliata!"
