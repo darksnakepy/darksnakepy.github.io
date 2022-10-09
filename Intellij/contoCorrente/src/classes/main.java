@@ -31,7 +31,7 @@ public class main {
                     System.out.println("Quanto vuoi versare?\n");
                     inpSaldo = versamento.nextFloat();
                     scc.Versamento(inpSaldo);
-                    System.out.println("Saldo totale: " + scc.visualizzaSaldo());
+                    System.out.println("Saldo totale: " + scc.visualizzaSaldo()+ "$");
                 }
                 case 3: {
                     System.out.println("Inserisci il pin\n");
@@ -43,14 +43,14 @@ public class main {
                     System.out.println("Quanto vuoi prelevare?");
                     inpPrelievo = prelievo.nextFloat();
                     scc.Preleva(inpPrelievo);
-                    System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo());
+                    System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo()+ "$");
 
                 }
                 case 4: {
                     int pinInp = 0;
                     pinInp = inp.nextInt();
                     if (pinInp == cc.pinUtente) {
-                        System.out.println("Credenziali \n" + "\nNome: " + cc.nome + "\nCognome: " + cc.cognome + "\nPin: " + cc.pinUtente + "Conto Corrente: " + scc.visualizzaSaldo());
+                        System.out.println("Credenziali \n" + "\nNome: " + cc.nome + "\nCognome: " + cc.cognome + "\nPin: " + cc.pinUtente + "\nConto Corrente: " + scc.visualizzaSaldo() + "$");
                         break;
                     } else {
                         System.out.println("Pin Sbagliato, utente non riconosciuto.");

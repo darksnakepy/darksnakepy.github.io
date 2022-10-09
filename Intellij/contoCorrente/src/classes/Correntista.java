@@ -18,29 +18,17 @@ public class Correntista {
         pinUtente = inp.nextInt();
     }
 
-    public String controlloPin(){
+    public String controlloPin() {
         int controllo;
         controllo = inp.nextInt();
         if (controllo == pinUtente) {
             return "Pin corretto";
-        }
-        else{
-            System.exit(0);
-        }
-
-    }
-
-    public void profilo(){
-        int pinInp = 0;
-        pinInp = inp.nextInt();
-        if(pinInp == pinUtente){
-            System.out.println("Credenziali \n"+"\nNome: "+nome+"\nCognome: "+cognome+"\nPin: "+pinUtente);
-        }
-        else{
-            System.out.println("Pin Sbagliato, utente non riconosciuto.");
+        } else {
+            return "Pin sbagliato";
         }
     }
 }
+
 
 
 
