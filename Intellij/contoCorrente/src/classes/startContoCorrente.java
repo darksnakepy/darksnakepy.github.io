@@ -4,8 +4,6 @@ public class startContoCorrente {
 
     float saldoCorrente = 0.0f;
     float inpSaldo = 0.0f;
-    float prelievo;
-
 
     public float Versamento(float inpSaldo) {
         saldoCorrente += inpSaldo;
