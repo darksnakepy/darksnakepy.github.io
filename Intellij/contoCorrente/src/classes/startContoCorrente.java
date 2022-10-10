@@ -1,11 +1,14 @@
 package classes;
-
-public class startContoCorrente {
+class startContoCorrente {
 
     float saldoCorrente = 0.0f;
     float inpSaldo = 0.0f;
+    final Float FIDO = -3000.0f;
+
+    Correntista cc = new Correntista();
 
     public float Versamento(float inpSaldo) {
+        cc.saldoUtente -= inpSaldo;
         saldoCorrente += inpSaldo;
         return inpSaldo;
     }
@@ -14,10 +17,14 @@ public class startContoCorrente {
         return saldoCorrente;
     }
 
-    public float Preleva(float inpSaldo){
-        saldoCorrente -= inpSaldo;
-        return inpSaldo;
+    public float Preleva(float inpSaldo) throws Exception {
+        if (cc.saldoUtente - FIDO >= inpSaldo) {
+            saldoCorrente -= inpSaldo;
+            return inpSaldo;
+        } else
+            throw new Exception();
     }
 }
+
 
 

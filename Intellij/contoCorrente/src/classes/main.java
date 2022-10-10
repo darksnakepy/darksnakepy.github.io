@@ -10,17 +10,23 @@ public class main {
         do {
             int choice;
             System.out.println("Benvenuto nell'interfaccia del Conto Corrente, scelga un'opzione: \n" +
-                    "1. Registrati\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
-            Scanner inp = new Scanner(System.in);
-            choice = inp.nextInt();
+                    "1. Crea un nuovo utente\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
+            Scanner scanner = new Scanner(System.in);
+            choice = scanner.nextInt();
 
             startContoCorrente scc = new startContoCorrente();
             Correntista cc = new Correntista();
 
-
             switch (choice) {
                 case 1: {
-                    cc.Registrati();
+                    System.out.println("Nome: ");
+                    cc.nome = scanner.next();
+                    System.out.println("Cognome: ");
+                    cc.cognome = scanner.next();
+                    System.out.println("Pin: ");
+                    cc.pinUtente = scanner.nextInt();
+                    System.out.println("Inserisci il saldo iniziale: ");
+                    float saldoUtente = scanner.nextFloat();
                     break;
                 }
                 case 2: {
@@ -38,8 +44,13 @@ public class main {
                     Scanner prelievo = new Scanner(System.in);
                     System.out.println("Quanto vuoi prelevare?");
                     inpPrelievo = prelievo.nextFloat();
-                    scc.Preleva(inpPrelievo);
-                    System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo() + "$");
+                    try {
+                        scc.Preleva(inpPrelievo);
+                        System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo() + "$");
+                    }catch (Exception e){
+                        System.out.println("Il conto e' in rosso.");
+                        System.out.println("Ecco il tuo conto: " + scc.visualizzaSaldo());
+                    }
                     break;
                 }
                 case 4: {

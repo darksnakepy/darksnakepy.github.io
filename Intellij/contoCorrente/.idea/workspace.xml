@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5f91ce4-4591-4f17-b279-51d00b8f9d6e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/contoCorrente/classes/Correntista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/contoCorrente/classes/Correntista.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/contoCorrente/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/contoCorrente/classes/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/contoCorrente/classes/startContoCorrente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/contoCorrente/classes/startContoCorrente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Correntista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Correntista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/startContoCorrente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/startContoCorrente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +36,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "discord-project"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="classes.main" />
@@ -56,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665220855488</updated>
       <workItem from="1665313763087" duration="8925000" />
+      <workItem from="1665411692649" duration="6573000" />
     </task>
     <servers />
   </component>
@@ -72,6 +78,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
