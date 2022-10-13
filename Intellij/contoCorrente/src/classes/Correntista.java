@@ -7,15 +7,18 @@ public class Correntista {
     float saldoUtente = 0;
     int pinUtente = 0;
 
-    Scanner inp = new Scanner(System.in);
-
-    public String controlloPin() {
+    public void controlloPin() throws Exception {
+        System.out.println("Inserisci il pin: \n");
+        boolean exists = false;
+        Scanner inp = new Scanner(System.in);
         int controllo;
         controllo = inp.nextInt();
         if (controllo == pinUtente) {
-            return "Pin corretto";
-        } else {
-            return "Pin sbagliato";
+            exists = true;
+            System.out.println("Trovato");
+        }
+        if(!exists){
+            throw new Exception();
         }
     }
 }

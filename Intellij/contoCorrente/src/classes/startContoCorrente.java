@@ -8,7 +8,6 @@ class startContoCorrente {
     Correntista cc = new Correntista();
 
     public float Versamento(float inpSaldo) {
-        cc.saldoUtente -= inpSaldo;
         saldoCorrente += inpSaldo;
         return inpSaldo;
     }
@@ -18,9 +17,10 @@ class startContoCorrente {
     }
 
     public float Preleva(float inpSaldo) throws Exception {
-        if (cc.saldoUtente - FIDO >= inpSaldo) {
+        if (saldoCorrente - FIDO >= inpSaldo) {
             saldoCorrente -= inpSaldo;
             return inpSaldo;
+
         } else
             throw new Exception();
     }

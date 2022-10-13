@@ -2,20 +2,21 @@ package classes;
 import classes.Correntista;
 import classes.startContoCorrente;
 
+import java.io.IOException;
+import java.lang.Runtime;
+
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
+        startContoCorrente scc = new startContoCorrente();
+        Correntista cc = new Correntista();
         do {
             int choice;
             System.out.println("Benvenuto nell'interfaccia del Conto Corrente, scelga un'opzione: \n" +
                     "1. Crea un nuovo utente\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
-
-            startContoCorrente scc = new startContoCorrente();
-            Correntista cc = new Correntista();
 
             switch (choice) {
                 case 1: {
@@ -25,11 +26,14 @@ public class main {
                     cc.cognome = scanner.next();
                     System.out.println("Pin: ");
                     cc.pinUtente = scanner.nextInt();
-                    System.out.println("Inserisci il saldo iniziale: ");
-                    float saldoUtente = scanner.nextFloat();
                     break;
                 }
                 case 2: {
+                    try{
+                        cc.controlloPin();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     float inpSaldo;
                     Scanner versamento = new Scanner(System.in);
                     System.out.println("Quanto vuoi versare?\n");
@@ -39,7 +43,11 @@ public class main {
                     break;
                 }
                 case 3: {
-
+                    try{
+                        cc.controlloPin();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     float inpPrelievo;
                     Scanner prelievo = new Scanner(System.in);
                     System.out.println("Quanto vuoi prelevare?");
@@ -54,6 +62,11 @@ public class main {
                     break;
                 }
                 case 4: {
+                    try{
+                        cc.controlloPin();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     System.out.println("Credenziali \n" + "\nNome: " + cc.nome + "\nCognome: " + cc.cognome + "\nPin: " + cc.pinUtente + "\nConto Corrente: " + scc.visualizzaSaldo() + "$");
                     break;
                 }
