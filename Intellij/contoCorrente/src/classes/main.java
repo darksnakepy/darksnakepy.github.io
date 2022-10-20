@@ -13,7 +13,7 @@ public class main {
         Correntista cc = new Correntista();
         do {
             int choice;
-            System.out.println("Benvenuto nell'interfaccia del Conto Corrente, scelga un'opzione: \n" +
+            System.out.println("Benvenuto nell'interfaccia iniziale del Conto Corrente, scelga un'opzione: \n" +
                     "1. Crea un nuovo utente\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
@@ -26,6 +26,9 @@ public class main {
                     cc.cognome = scanner.next();
                     System.out.println("Pin: ");
                     cc.pinUtente = scanner.nextInt();
+                    System.out.println("Saldo iniziale");
+                    scc.saldoCorrente = scanner.nextFloat();
+                    System.out.println("Perfetto! ti sei registrato.");
                     break;
                 }
                 case 2: {
@@ -51,7 +54,7 @@ public class main {
                     float inpPrelievo;
                     Scanner prelievo = new Scanner(System.in);
                     System.out.println("Quanto vuoi prelevare?");
-                    inpPrelievo = prelievo.nextFloat();
+                    inpPrelievo = prelievo.nextFloat();1
                     try {
                         scc.Preleva(inpPrelievo);
                         System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo() + "$");
