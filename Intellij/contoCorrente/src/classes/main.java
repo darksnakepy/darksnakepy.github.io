@@ -13,23 +13,31 @@ public class main {
         Correntista cc = new Correntista();
         do {
             int choice;
-            System.out.println("Benvenuto nell'interfaccia iniziale del Conto Corrente, scelga un'opzione: \n" +
-                    "1. Crea un nuovo utente\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
+            System.out.println("Benvenuto nell'interfaccia iniziale del Conto Corrente, scelga un'opzione: \n");
+
+        if (cc.verificato==false){
+            System.out.println("1. Crea un nuovo utente\n2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
+        }
+        else{
+                System.out.println("2. Versare soldi sul conto corrente\n3. Prelevare soldi sul conto corrente\n4. Visualizza informazioni utente");
+            }
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1: {
-                    System.out.println("Nome: ");
-                    cc.nome = scanner.next();
-                    System.out.println("Cognome: ");
-                    cc.cognome = scanner.next();
-                    System.out.println("Pin: ");
-                    cc.pinUtente = scanner.nextInt();
-                    System.out.println("Saldo iniziale");
-                    scc.saldoCorrente = scanner.nextFloat();
-                    System.out.println("Perfetto! ti sei registrato.");
-                    break;
+                        System.out.println("Nome: ");
+                        cc.nome = scanner.next();
+                        System.out.println("Cognome: ");
+                        cc.cognome = scanner.next();
+                        System.out.println("Pin: ");
+                        cc.pinUtente = scanner.nextInt();
+                        System.out.println("Saldo iniziale");
+                        scc.saldoCorrente = scanner.nextFloat();
+                        System.out.println("Perfetto! ti sei registrato.");
+                        cc.verificato = true;
+                        break;
+
                 }
                 case 2: {
                     try{

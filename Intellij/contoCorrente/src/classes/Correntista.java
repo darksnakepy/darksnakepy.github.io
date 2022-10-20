@@ -6,6 +6,7 @@ public class Correntista {
     String nome, cognome;
     float saldoUtente = 0;
     int pinUtente = 0;
+    boolean verificato = false;
 
     public void controlloPin() throws Exception {
         System.out.println("Inserisci il pin: \n");

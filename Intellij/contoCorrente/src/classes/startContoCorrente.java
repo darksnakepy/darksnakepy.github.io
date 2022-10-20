@@ -3,7 +3,7 @@ class startContoCorrente {
 
     float saldoCorrente = 0.0f;
     float inpSaldo = 0.0f;
-    final Float FIDO = -3000.0f;
+    final Float FIDO = 3000.0f;
 
     Correntista cc = new Correntista();
 
