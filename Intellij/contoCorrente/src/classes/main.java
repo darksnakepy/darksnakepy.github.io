@@ -54,7 +54,7 @@ public class main {
                     float inpPrelievo;
                     Scanner prelievo = new Scanner(System.in);
                     System.out.println("Quanto vuoi prelevare?");
-                    inpPrelievo = prelievo.nextFloat();1
+                    inpPrelievo = prelievo.nextFloat();
                     try {
                         scc.Preleva(inpPrelievo);
                         System.out.println("Hai prelevato: " + inpPrelievo + "\nSaldo totale: " + scc.visualizzaSaldo() + "$");
