@@ -2,6 +2,8 @@ let diametro = 100
 let y = 100
 let raggio = diametro/2
 
+// non finito
+
 function drawFlower(x, y, d)
 {
     strokeWeight(3)
