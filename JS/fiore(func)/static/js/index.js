@@ -1,6 +1,6 @@
 let width = 600
 let height = 300
-let diametro = 110
+let diametro = 100
 let raggio = diametro/2
 
 function setup() {
