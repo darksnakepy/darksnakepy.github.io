@@ -1,17 +1,29 @@
 let width = 600
 let height = 300
-let diametro = 100
+let diametro = 50
 let raggio = diametro/2
+let delta = 5
+
+
 
 function setup() {
-    createCanvas(width, height)
+    createCanvas(600, 300)
 }
 
 function draw() {
     background(0,255,0)
-    flower(0, height/2, diametro)
-    flower(width / 2, height/2, diametro)
-    flower(width, height/2, diametro)
+    flower(width/2, height/2, diametro)
+    if(width < diametro)
+    {
+        delta = Math.abs(delta);
+    }
+
+    if(width > 600 - diametro)
+    {
+        delta = delta * (-1);
+    }
+
+    width = delta + width;
 }
 
 function flower(x, y, d) {
