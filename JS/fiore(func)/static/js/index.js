@@ -4,14 +4,12 @@ let diametro = 50
 let raggio = diametro/2
 let delta = 5
 
-
-
 function setup() {
     createCanvas(600, 300)
 }
 
 function draw() {
-    background(0,255,0)
+    background(0,253,0)
     flower(width/2, height/2, diametro)
     if(width < diametro)
     {
