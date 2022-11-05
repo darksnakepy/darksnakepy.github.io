@@ -1,27 +1,26 @@
 let width = 600
 let height = 300
-let diametro = 50
-let raggio = diametro/2
-let delta = 5
+let offset = 5
+let diametro = 50;
+let raggio = diametro/2;
+let y = 300;
+let x = diametro;
 
 function setup() {
-    createCanvas(600, 300)
+    createCanvas(width, height)
 }
 
 function draw() {
     background(0,253,0)
-    flower(width/2, height/2, diametro)
-    if(width < diametro)
+    flower(x, y/2, diametro)
+    if(x < diametro)
     {
-        delta = Math.abs(delta);
+        offset = Math.abs(offset)
     }
-
-    if(width > 600 - diametro)
-    {
-        delta = delta * (-1);
+    else if(x > width - diametro){
+        offset *= -1
     }
-
-    width = delta + width;
+    x += offset
 }
 
 function flower(x, y, d) {
