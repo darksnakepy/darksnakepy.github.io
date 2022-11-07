@@ -8,16 +8,16 @@ public class Main{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Inserisci la base e l'altezza");
         Rettangolo r = new Rettangolo(scanner.nextFloat(), scanner.nextFloat());
-        System.out.println("Perimetro = " + r.calcperimetro());
-        System.out.println("Area = " + r.calcArea());
-        
-
+        System.out.println("Perimetro: " + r.calcperimetro());
+        System.out.println("Area: " + r.calcArea());
     }
 }
 
 class Rettangolo {
     float base;
     float altezza;
+
+    int rettangolo1, rettangolo2, rettangolo3;
 
     public Rettangolo(float base, float altezza) {
         this.base = base;
