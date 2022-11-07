@@ -3,7 +3,7 @@ package classes;
 import java.util.Scanner;
 
 public class Rettangolo {
-    public float readBase()
+    public float ridimensiona()
     {
         float base;
         Scanner inp = new Scanner(System.in);
@@ -30,18 +30,26 @@ public class Rettangolo {
             System.out.println("L'altezza non puo essere minore di 0");
             return 0;
         }
-
     }
 
-    public float CalcoloRettangolo()
+    public float calcoloArea()
     {
         float b, h, area;
         Rettangolo r = new Rettangolo();
         b = r.readBase();
         h = r.readAltezza();
         area = b*h;
-        System.out.println(area);
         return area;
+    }
+    
+    public float perimetro()
+    {
+        float b, h, perimetro;
+        Rettangolo r = new Rettangolo();
+        b = r.readBase();
+        h = r.readAltezza();
+        perimetro = (2*b)+(2*a)
+        return perimetro;
     }
 }
 
