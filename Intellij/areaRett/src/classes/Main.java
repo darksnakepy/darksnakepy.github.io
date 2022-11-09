@@ -10,7 +10,7 @@ public class Main{
         float areaTot, perTot;
 
         Scanner scanner = new Scanner(System.in);
-        
+
         System.out.println("Inserisci la base e l'altezza del primo rettangolo: ");
         base = scanner.nextFloat();
         altezza = scanner.nextFloat();
@@ -36,7 +36,7 @@ public class Main{
         System.out.println("Area totale dei 3 rettangoli: " + areaTot);
 
         perTot = r1.calcperimetro(base, altezza) + r2.calcperimetro(base, altezza) + r3.calcperimetro(base, altezza);
-        System.out.println("Perimetro totale dei 3 rettangoli: " + areaTot);
+        System.out.println("Perimetro totale dei 3 rettangoli: " + perTot);
     }
 }
 
