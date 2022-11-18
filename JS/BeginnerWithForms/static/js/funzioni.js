@@ -1,8 +1,8 @@
 function getMonthDays(month){
-    if (month === "febbraio"){
+    if (month.value.toLowerCase() === "febbraio"){
         return "28 giorni"
     }
-    else if (month === "novembre" || month === "aprile" || month === "giugno" || month === "settembre"){
+    else if (month.value.toLowerCase() === "novembre" || month.value.toLowerCase() === "aprile" || month.value.toLowerCase() === "giugno" || month.value.toLowerCase() === "settembre"){
         return "30 giorni"
     }
     else{
@@ -34,7 +34,7 @@ function convertToMS(hour, min){
 }
 
 function convertToC(temp){
-    return `Gradi in Centigradi: ${(temp -32.0) * 5.0 / 9.0}`
+    return `Gradi in fahrenheit: ${(temp -32.0) * 5.0 / 9.0} F°`
 } 
 
 
