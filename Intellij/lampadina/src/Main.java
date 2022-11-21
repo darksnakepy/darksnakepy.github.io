@@ -60,7 +60,7 @@ class Lampadina {
 }
 
 class StatoLampadina{
-    boolean accesa = true;
-    boolean spenta = true;
-    boolean rotta = true;
+    boolean accesa = false;
+    boolean spenta = false;
+    boolean rotta = false;
 }
