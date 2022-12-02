@@ -21,7 +21,7 @@ public class Main {
                     admin.aggDipendenti(nomeInp, cognomeInp);
                     break;
                 case 2:
-                    break;
+                    admin.stampadipendenti();
                 case 3:
                     break;
                 case 4:
@@ -36,16 +36,16 @@ class Monitor{
 
     Scanner input = new Scanner(System.in);
     ArrayList<Dipendenti> ListaDipendenti = new ArrayList<>();
+
     void aggDipendenti(String nome, String cognome) {
-        ListaDipendenti.add(new Dipendenti(nome, cognome)
-        );
+        ListaDipendenti.add(new Dipendenti(nome, cognome));
     }
 
-    /* void stampadipendenti() {
-        for (int i=0; i < ListaDipendenti.size(); i++) {
-            System.out.println(employee.name + " " + employee.surname);
+    void stampadipendenti() {
+        for (Dipendenti dip: ListaDipendenti) {
+            System.out.println(dip);
         }
-    }*/
+    }
 
     void creaProgetto(){
         System.out.println("Scegli il nome del progetto: ");
@@ -74,27 +74,35 @@ class Dipendenti {
 }
 
 class Progetto{
-
+    Scanner input = new Scanner(System.in);
     String nomeProg;
     ArrayList<Tasks> task = new ArrayList<>();
     ArrayList<Dipendenti> dipendentiList;
+    ArrayList<Milestone> milestoneList = new ArrayList<>();;
     int nDipendenti;
+
     public Progetto(String nomeProg, int nDipendenti){
         this.nomeProg = nomeProg;
         this.nDipendenti = nDipendenti;
     }
 
-    void Info(){
+    /*void Info(){
         System.out.println("Informazioni del progetto:\n" + "Nome Progetto" + ": " + nomeProg + "\n" + "Dipendente: " + dipendentiList.size() + "\n"
         );
     }
-    /* String InfoDipendenti(){
-        for(int i =0; i < dipendentiList.size(); i++){
-            return "Dipendente numero [" + i +"]" + Dipendenti.nome + " " + dipendenti.cognome;
-        }
-    }
     */
 
+    void creaMilestone(){
+        System.out.println("Inserisci il nome dell'obbiettivo: ");
+        String tempMIle = input.next();
+        milestoneList.add(new Milestone(tempMIle));
+    }
+
+    void printaMilestone(){
+        for(Milestone m : milestoneList){
+            System.out.println(m);
+        }
+    }
 }
 
 
@@ -102,6 +110,7 @@ class Milestone{
     float percentMilestone = 0;
     String nomeMIlestone;
     ArrayList<Tasks> taskList = new ArrayList<>();
+
     int contMilestone;
     boolean milestoneRaggiunta = false;
 
@@ -134,10 +143,6 @@ class Tasks{
         this.nome = nome;
         this.scadenza = scadenza;
         this.dipendenteTask = dipendenteTask;
-    }
-
-    void creaTask(){
-
     }
 }
 
