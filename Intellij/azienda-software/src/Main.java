@@ -11,7 +11,7 @@ public class Main {
 
         int choice = 0;
         do {
-            System.out.println("[1] Aggiungi dipendenti alla lista\n[2] Crea progetto\n[3] Monitora progetto\n[4] Esci");
+            System.out.println("Benvenuto nel pannello admin\n[1] Aggiungi dipendenti alla lista\n[2] Crea un nuovo progetto\n[3] Opzioni progetto\n[4] Esci");
             choice = inp.nextInt();
             switch (choice) {
                 case 1:
@@ -26,7 +26,7 @@ public class Main {
                     System.out.println("Progetto creato!\n");
                     break;
                 case 3:
-                    progettoMenu(admin.progetto);
+                    funzioni(admin.progetto);
                     break;
                 case 4:
                     break;
@@ -35,11 +35,11 @@ public class Main {
 
     }
 
-    static void progettoMenu(Progetto progetto) {
+    static void funzioni(Progetto progetto) {
         Scanner input = new Scanner(System.in);
         int choice;
         do {
-            System.out.println("[1] Aggiungi Milestone [obbiettivo] \n[2] Aggiungi una task \n[3] Cambia stato del progetto \n[4] Esci");
+            System.out.println("[1] Aggiungi Milestone [ nuovo obbiettivo] \n[2] Aggiungi una task ad una milestone \n[3] Cambia stato del progetto \n[4] Esci");
             choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -49,7 +49,7 @@ public class Main {
                     System.out.println("Milestone aggiunta correttamente\n");
                 case 2:
                     System.out.println("Inserisci a quale obbiettivo assegnare la task\n");
-                    Milestone mil = progetto.selezioneObbiettivo();
+                    // fare una funzione che printa le milestone
                     System.out.println("Seleziona ora il dipendente\n");
                     for(int i=0; i < progetto.dipendentiList.size(); i++){
                         System.out.println("Dipendente numero [" + i +"] " +progetto.dipendentiList.get(i).nome + progetto.dipendentiList.get(i).cognome +"\n");
@@ -57,17 +57,7 @@ public class Main {
                     int scegliDip = input.nextInt();
                     System.out.println("Seleziona i giorni \n");
                     int sceltaGiorni = input.nextInt();
-
-
-                    /*void assegnaTask(String nomeTask, int dataScadenza, Dipendenti dipendenteTask){
-                                 taskList.add(new Tasks(nomeTask, dataScadenza, dipendenteTask));
-                    }*/
-
-
                 case 3:
-
-
-
                     break;
                 case 4:
                     break;
@@ -112,6 +102,7 @@ class Dipendenti {
 class Progetto{
     Scanner input = new Scanner(System.in);
     String nomeProg;
+    // liste varie
     ArrayList<Tasks> task = new ArrayList<>();
     ArrayList<Dipendenti> dipendentiList = new ArrayList<>();
     ArrayList<Milestone> milestoneList = new ArrayList<>();;
@@ -133,13 +124,7 @@ class Progetto{
             System.out.println(m);
         }
     }
-    Milestone selezioneObbiettivo(){
-        for(int i = 0; i < milestoneList.size(); i++){
-            System.out.println("Milestone numero ["+ i + "]"+ milestoneList.get(i).nomeMilestone);
-        }
-        int choice = input.nextInt();
-        return milestoneList.get(choice);
-    }
+
 }
 
 class Milestone{
