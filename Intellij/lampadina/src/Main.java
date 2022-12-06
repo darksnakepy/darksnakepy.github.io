@@ -43,13 +43,15 @@ class Lampadina {
     }
 
     void click(){
-        if(st.rotta == false && click < numeroClickMax)
+        if(!st.rotta && click < numeroClickMax)
         {
             st.accesa = true;
+            st.spenta = false;
             click++;
         }
-        if(st.rotta == false && st.accesa == true) {
+        if(!st.rotta && st.accesa) {
             st.spenta = true;
+            st.accesa = false;
             click++;
         }
         if(click > numeroClickMax)
@@ -61,6 +63,6 @@ class Lampadina {
 
 class StatoLampadina{
     boolean accesa = false;
-    boolean spenta = false;
+    boolean spenta = true;
     boolean rotta = false;
 }
