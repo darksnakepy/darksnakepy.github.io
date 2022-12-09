@@ -1,8 +1,6 @@
-import javax.management.StandardEmitterMBean;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -39,7 +37,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int choice;
         do {
-            System.out.println("[1] Aggiungi Milestone [ nuovo obbiettivo] \n[2] Aggiungi una task ad una milestone \n[3] Cambia stato del progetto \n[4] Esci");
+            System.out.println("[1] Aggiungi Milestone [ nuovo obbiettivo ] \n[2] Aggiungi una task ad una milestone \n[3] Cambia stato del progetto \n[4] Esci");
             choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -47,16 +45,30 @@ public class Main {
                     String inputMilestone = input.next();
                     progetto.aggiungiMilestone(inputMilestone);
                     System.out.println("Milestone aggiunta correttamente\n");
+
                 case 2:
-                    System.out.println("Inserisci a quale obbiettivo assegnare la task\n");
-                    // fare una funzione che printa le milestone
-                    System.out.println("Seleziona ora il dipendente\n");
-                    for(int i=0; i < progetto.dipendentiList.size(); i++){
-                        System.out.println("Dipendente numero [" + i +"] " +progetto.dipendentiList.get(i).nome + progetto.dipendentiList.get(i).cognome +"\n");
+                    if(progetto.milestoneList.size() > 0){
+                        System.out.println("Inserisci l'obbiettivo a cui assegnare la task\n");
+                        progetto.printaMilestone();
+                        int sceltaMilestone = input.nextInt();
+                        System.out.println("Seleziona ora il dipendente\n");
+                        for(int i=0; i < progetto.dipendentiList.size(); i++){
+                            System.out.println("Dipendente n[" + i +"] " +progetto.dipendentiList.get(i).nome + progetto.dipendentiList.get(i).cognome +"\n");
+                        }
+                        int scegliDip = input.nextInt();
+                        System.out.println("Seleziona quanti giorni :\n");
+                        int sceltaGiorni = input.nextInt();
+
+                        System.out.println("Nome della task:\n");
+                        String nomeTask = input.next();
+
+                        /* Milestone milestone = null;
+                        milestone.assegnaTask(nomeTask, sceltaGiorni, );
+                        */
                     }
-                    int scegliDip = input.nextInt();
-                    System.out.println("Seleziona i giorni \n");
-                    int sceltaGiorni = input.nextInt();
+                    else {
+                        System.out.println("Non ci sono milestone attive\n");
+                    }
                 case 3:
                     break;
                 case 4:
@@ -80,8 +92,8 @@ class Monitor{
         String nomeprogetto = input.next();
         System.out.println("Scegli un dipendente: ");
         ArrayList<Dipendenti> templist = new ArrayList<>();
-        for(int i=0; i < templist.size(); i++){
-            System.out.println("Dipendente numero [" + i +"] " +templist.get(i).nome + templist.get(i).cognome +"\n");
+        for(int i=0; i < dipendentiList.size(); i++){
+            System.out.println("Dipendente numero [" + i +"] " +dipendentiList.get(i).nome + " " + dipendentiList.get(i).cognome +"\n");
         }
         int sceltaDip;
         sceltaDip = input.nextInt();
@@ -107,6 +119,8 @@ class Progetto{
     ArrayList<Dipendenti> dipendentiList = new ArrayList<>();
     ArrayList<Milestone> milestoneList = new ArrayList<>();;
 
+    int giorni = 0;
+
     int nDipendenti;
     boolean progettoCompleto = false;
 
@@ -120,11 +134,18 @@ class Progetto{
     }
 
     void printaMilestone(){
-        for(Milestone m : milestoneList){
-            System.out.println(m);
+        for(int i = 0; i < milestoneList.size(); i++)
+        {
+            System.out.println("Milestone n[" + i +"] " +milestoneList.get(i).nomeMilestone + "\n");
         }
     }
 
+    void aggiungiGiorno(){
+        if(progettoCompleto == false){
+            giorni++;
+            System.out.println("Aggiunto un giorno.\n");
+        }
+    }
 }
 
 class Milestone{
