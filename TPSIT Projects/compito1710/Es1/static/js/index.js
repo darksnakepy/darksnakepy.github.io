@@ -41,6 +41,7 @@ sizer.addEventListener("input", function(e){
     background(0)
     size = value
     y=0
+    x=0
 })
 
 
