@@ -1,12 +1,9 @@
 
 let sizer = document.querySelector("#size")
 
-
 let width = 600
 let height = 600
-
 let size = 20
-
 let x = 0
 let y = 0
 
@@ -43,39 +40,3 @@ sizer.addEventListener("input", function(e){
     y=0
     x=0
 })
-
-
-
-
-
-
-
-
-
-/*function setup() {
-    createCanvas(400, 400);
-    tileSize = 50;
-  }
-  
-  // Draw the Truchet tiles
-  function draw() {
-    background(255);
-    strokeWeight(2);
-    stroke(0);
-    
-    // Draw a grid of tiles
-    for (let i = 0; i < width; i += tileSize) {
-      for (let j = 0; j < height; j += tileSize) {
-        // Determine the direction of the diagonal lines based on the position of the tile
-        if ((i / tileSize + j / tileSize) % 2 === 0) {
-          line(i, j, i + tileSize, j + tileSize);
-          line(i + tileSize, j, i, j + tileSize);
-        } else {
-          line(i, j + tileSize, i + tileSize, j);
-          line(i + tileSize, j + tileSize, i, j);
-        }
-      }
-    }
-  }
-
-*/

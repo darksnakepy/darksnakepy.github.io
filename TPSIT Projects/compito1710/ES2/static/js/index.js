@@ -1,6 +1,6 @@
 
 
-let inputSize  = document.querySelector("[name=size]")
+let sizer = document.querySelector("[name=size]")
 
 function setup() 
 {
