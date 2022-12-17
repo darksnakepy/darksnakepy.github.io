@@ -20,16 +20,17 @@ function draw() {
   noStroke()
 
   if(random() <= 0.5){
+
     fill(255, 255, 255)
     square(x, y, size)
     fill(0)
-    triangle()
+    triangle(x + size/2, y + size/2 , x + size/2, y + size, x + size, y + size/2);
   }
   else{
     fill(0)
     square(x, y, size)
     fill(255, 255, 255)
-    triangle()
+    triangle(x + size/2, y + size/2 , x + size/2, y + size, x + size, y + size);
   }
 
   x+=size
