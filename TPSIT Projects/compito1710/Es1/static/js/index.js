@@ -37,6 +37,6 @@ sizer.addEventListener("input", function(e){
     let value = parseInt(sizer.value)
     background(0)
     size = value
-    y=0
+    y=0 // reset del canvas per la x e la y
     x=0
 })
