@@ -1,15 +1,49 @@
+let sizer = document.querySelector("[name=sizeTriangles]")
 
+let width = 600
+let height = 600
 
-let sizer = document.querySelector("[name=size]")
+let x = 0
+let y = 0
+
+let size = 50
+
 
 function setup() 
 {
-  createCanvas(600, 600)
-  background(255, 0, 0)
+  createCanvas(width, height)
+  background(220)  
 }
 
 function draw() {
-  
-    
+
+  noStroke()
+
+  if(random() <= 0.5){
+    fill(255, 255, 255)
+    square(x, y, size)
+    fill(0)
+    triangle()
+  }
+  else{
+    fill(0)
+    square(x, y, size)
+    fill(255, 255, 255)
+    triangle()
+  }
+
+  x+=size
+  if(x>=width){
+    x = 0
+    y+=size
+  }
 }
 
+sizer.addEventListener("input", function(e){
+  e.preventDefault()
+  let value = parseInt(sizer.value)
+  background(255, 255, 255)
+  size = value
+  x=0
+  y=0
+})

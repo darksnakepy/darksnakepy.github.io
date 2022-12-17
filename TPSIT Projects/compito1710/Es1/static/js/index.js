@@ -1,5 +1,5 @@
 
-let sizer = document.querySelector("#size")
+let sizer = document.querySelector("[name=size]")
 
 let width = 600
 let height = 600
