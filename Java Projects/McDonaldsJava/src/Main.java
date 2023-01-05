@@ -4,10 +4,10 @@ import java.util.ArrayList;
 class Main {
 
     static Scanner inp = new Scanner(System.in); // global scanner
-
+    static float finalPrice;
 
     public static void main(String[] args){
-        McDonalds mcDonalds = new McDonalds();
+        // McDonalds mcDonalds = new McDonalds();
         ArrayList<Hamburgers> burgers = new ArrayList<>();
 
         int choice = 0;
@@ -18,10 +18,11 @@ class Main {
         burgers.add(new Hamburgers(5, "Cheeseburger", 2, 5.0f)); // low quantity so we test unavailable burgers function
 
         do{
-            mcDonalds.printMenu();
+            System.out.println("[1] Get hamburger list\n[2] Shop\n[3] Exit\n");
             choice = inp.nextInt();
-            if(choice==1){
-                printList(burgers);
+            switch(choice){
+                case 1 -> printList(burgers);
+                case 2 -> Shop(burgers);
             }
         }while(choice != 3);
     }
@@ -34,32 +35,46 @@ class Main {
 
     static void Shop(ArrayList<Hamburgers> burgers){
         ArrayList<Hamburgers> bill = new ArrayList<>();
-
         int choicemenu = 0;
         do{
-            System.out.println("""
-                    [1] Buy a hamburger
-                    [2] Bill
-                    [3] Exit
-                    """);
+            System.out.println("[1] Buy a hamburger\n[2] Bill\n[3] Exit");
             choicemenu = inp.nextInt();
-            switch(choicemenu){
-                case 1:
+            switch(choicemenu) {
+
+                case 1 -> {
                     int inputBurgers;
-                    System.out.println("Choose a burger (insert the id)");
-                    printList(burgers);
-                    inputBurgers = inp.nextInt();
-
-
-
-
-
-                case 2:
+                    do {
+                        System.out.println("Choose a burger (please insert the number id), press 6 to go back to the main menu\n");
+                        printList(burgers);
+                        inputBurgers = inp.nextInt();
+                        for (Hamburgers hamburgers : burgers) {
+                            if (hamburgers.id == inputBurgers) {
+                                if (hamburgers.quantity != 0) {
+                                    hamburgers.quantity -= 1;
+                                    bill.add(hamburgers);
+                                    finalPrice += hamburgers.price;
+                                    //getBill(bill);
+                                } else {
+                                    System.out.println("We're sorry. The selected product is unavailable.\n");
+                                }
+                            }
+                        }
+                    } while (inputBurgers != 6);
+                }
+                case 2->{
+                    getBill(bill);
+                }
 
             }
 
-
         }while(choicemenu != 3);
+    }
+
+    static void getBill(ArrayList<Hamburgers> burgers){
+        for(Hamburgers hamburgers : burgers){
+            System.out.println("["+hamburgers.id+"]" + hamburgers.descr + " Price: " + hamburgers.price + "$ \n");
+        }
+        System.out.println("Final price " +finalPrice);
     }
 
 }
@@ -77,13 +92,17 @@ class Hamburgers{
     }
 }
 
-class McDonalds{
-    ArrayList<Hamburgers> products = new ArrayList<>();
+/*class McDonalds{
+    ArrayList<Hamburgers> products;
 
+    public McDonalds(ArrayList<Hamburgers> products)
+    {
+       // Hamburgers = products;
+    }
     public String printMenu(){
         return " [1] Get hamburger list\n [2] Shop\n [3] Exit\n ";
     }
 }
-
+*/
 
 
