@@ -62,7 +62,12 @@ class Main {
                     } while (inputBurgers != 6);
                 }
                 case 2->{
+                    float inputPayment;
                     getBill(bill);
+                    System.out.println("Payment > ");
+                    inputPayment = inp.nextFloat();
+                    float rest = payment(finalPrice, inputPayment);
+                    System.out.println("Rest of the money: "+ rest +"$");
                 }
 
             }
@@ -75,6 +80,18 @@ class Main {
             System.out.println("["+hamburgers.id+"]" + hamburgers.descr + " Price: " + hamburgers.price + "$ \n");
         }
         System.out.println("Final price " +finalPrice);
+    }
+
+    static float payment(float price, float inputMoney)
+    {
+        float restofMoney = inputMoney;
+        if(restofMoney >= 1){
+            restofMoney = inputMoney - price;
+        }
+        else if(restofMoney < 0){
+            System.out.println("Not enough money, retry.");
+        }
+        return restofMoney;
     }
 
 }
