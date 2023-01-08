@@ -7,7 +7,6 @@ class Main {
     static float finalPrice;
 
     public static void main(String[] args){
-        // McDonalds mcDonalds = new McDonalds();
         ArrayList<Hamburgers> burgers = new ArrayList<>();
 
         int choice = 0;
@@ -18,7 +17,7 @@ class Main {
         burgers.add(new Hamburgers(5, "Cheeseburger", 2, 5.0f)); // low quantity so we test unavailable burgers function
 
         do{
-            System.out.println("[1] Get hamburger list\n[2] Shop\n[3] Exit\n");
+            System.out.println("Welcome to McDonald's. Choose an option:\n[1] Get hamburger list\n[2] Shop\n[3] Exit\n");
             choice = inp.nextInt();
             switch(choice){
                 case 1 -> printList(burgers);
@@ -69,7 +68,6 @@ class Main {
                     float rest = payment(finalPrice, inputPayment);
                     System.out.println("Rest of the money: "+ rest +"$");
                 }
-
             }
 
         }while(choicemenu != 3);
@@ -93,7 +91,6 @@ class Main {
         }
         return restofMoney;
     }
-
 }
 class Hamburgers{
     int id;
@@ -109,17 +106,5 @@ class Hamburgers{
     }
 }
 
-/*class McDonalds{
-    ArrayList<Hamburgers> products;
-
-    public McDonalds(ArrayList<Hamburgers> products)
-    {
-       // Hamburgers = products;
-    }
-    public String printMenu(){
-        return " [1] Get hamburger list\n [2] Shop\n [3] Exit\n ";
-    }
-}
-*/
 
 
