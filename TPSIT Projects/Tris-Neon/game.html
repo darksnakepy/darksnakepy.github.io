@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="static/css/style.css" type="text/css">
+</head>
+<body>
+	<div class="container">      
+		<h1 class="title">TIC-TAC-TOE</h1>
+		<div id="status">
+            <div class="winner" style="display: none";>
+                WINNER: 
+            </div>
+
+			<div class="xwins">
+                X WINS: 0
+            </div>
+
+			<div class="owins">
+                O WINS: 0
+            </div>
+
+		</div>
+		<table id="board" border="1">
+			<tr row=0>
+				<th cell=0></th>
+				<th cell=1></th>
+				<th cell=2></th>
+			</tr>
+			<tr row=1>
+				<th cell=0></th>
+				<th cell=1></th>
+				<th cell=2></th>
+			</tr>
+			<tr row=2>
+				<th cell=0></th>
+				<th cell=1></th>
+				<th cell=2></th>
+			</tr>
+		</table>
+
+		<button class="reset" onclick="reset()"">RESET</button>
+	</div>
+    <script type="text/javascript" src="static/js/index.js"></script>
+</body>
+</html>

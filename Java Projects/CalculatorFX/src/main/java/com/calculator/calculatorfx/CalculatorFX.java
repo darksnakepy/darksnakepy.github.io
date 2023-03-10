@@ -1,0 +1,24 @@
+package com.calculator.calculatorfx;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class CalculatorFX extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(CalculatorFX.class.getResource("calcdesign.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 337, 529);
+        stage.setTitle("CalculatorFX");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
