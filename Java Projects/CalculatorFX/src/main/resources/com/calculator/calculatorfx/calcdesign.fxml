@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="root" alignment="CENTER" prefHeight="502.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #313234;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calculator.calculatorfx.CalculatorController">
+<VBox fx:id="root" alignment="CENTER" prefHeight="502.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calculator.calculatorfx.CalculatorController">
     <HBox alignment="CENTER_RIGHT" prefHeight="74.0" prefWidth="291.0" style="-fx-border-color: white; -fx-border-insets: 0;">
         <Label fx:id="screen" alignment="CENTER_RIGHT" contentDisplay="CENTER" style="-fx-text-fill: white;" textAlignment="RIGHT">
             <font>
@@ -14,17 +14,17 @@
         </Label>
     </HBox>
     <TilePane alignment="TOP_CENTER" hgap="10.0" layoutX="25.0" layoutY="123.0" prefColumns="4" prefRows="1" prefTileHeight="50.0" prefTileWidth="60.0">
-        <Button fx:id="radical" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="√">
+        <Button fx:id="radical" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" style="-fx-background-color: #323232;" text="√">
             <font>
                 <Font name="Verdana" />
             </font>
         </Button>
-        <Button fx:id="power" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="^">
+        <Button fx:id="power" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #323232;" text="^">
             <font>
                 <Font name="Verdana" />
             </font>
         </Button>
-        <Button fx:id="clearAll" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="CE">
+        <Button fx:id="clearAll" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #323232;" text="CE">
             <font>
                 <Font name="Verdana" />
             </font>
