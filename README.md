@@ -1,2 +1,2 @@
-# darksnakepy.github-io
+# darksnakepy.github.io
 School projects 
