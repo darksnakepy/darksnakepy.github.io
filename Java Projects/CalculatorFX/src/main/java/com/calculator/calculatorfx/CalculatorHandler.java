@@ -36,7 +36,7 @@ public class CalculatorHandler {
                 expression = "";
                 display = "";
             } else {
-                display = display.substring(0, display.length() - 1); // This throws if the display is empty making the next line not execute and potentially delete more than it needs to TODO maybe add a try catch
+                display = display.substring(0, display.length() - 1);
                 expression = expression.substring(0, expression.length() - 1);
             }
         } else {

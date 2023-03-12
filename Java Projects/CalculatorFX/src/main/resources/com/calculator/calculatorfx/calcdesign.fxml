@@ -7,7 +7,7 @@
 
 <VBox fx:id="root" alignment="CENTER" prefHeight="502.0" prefWidth="321.0" spacing="20.0" style="-fx-background-color: #202020;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calculator.calculatorfx.CalculatorController">
     <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="158.0" style="-fx-border-insets: 0;">
-        <Label fx:id="screen" alignment="CENTER_RIGHT" contentDisplay="CENTER" style="-fx-text-fill: white;" textAlignment="RIGHT" text="0">
+        <Label fx:id="screen" alignment="CENTER_RIGHT" contentDisplay="CENTER" style="-fx-text-fill: white;" text="0" textAlignment="RIGHT">
             <font>
                 <Font name="Verdana" size="40.0" />
             </font>

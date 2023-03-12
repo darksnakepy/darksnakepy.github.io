@@ -90,7 +90,6 @@ public class CalculatorController {
                 Button eventClick = (Button) event.getSource();
                 update(calculatorhandler.handler(eventClick.getText()));
             });
-
         }
     }
 }
