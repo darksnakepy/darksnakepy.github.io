@@ -10,7 +10,7 @@ class Client {
         String user_global;
 
         boolean running = false;
-        if(initialize()) {
+        if (initialize()) {
             running = true;
             do {
                 System.out.println("""
@@ -21,36 +21,17 @@ class Client {
                     case 1:
                         break;
                     case 2:
-                        System.out.println("Insert the username\n>");
+                        System.out.println("Insert the username:\n>");
                         String user = scanner.next();
-                        System.out.println("Insert the password\n>");
-                        String password = scanner.next();
-                        //login(user,password);
-                        user_global = user;
-
-                        do{
-                            mainMenu();
-                            choice = scanner.nextInt();
-                            switch(choice){
-                                case 1:
-                                    break;
-                                case 2:
-                                    break;
-                                case 3:
-                                    getBalance(user_global);
-                                case 4:
-                                    break;
-                                default:
-                                    System.out.println("Error");
-                                    break;
-                            }
-
-
-                        }while (running);
-                        break;
-                    default:
-                        System.out.println("Error.");
-                        running = false;
+                        System.out.println("Insert the password:\n>");
+                        String pass = scanner.next();
+                        String response = login(user, pass);
+                        if(response.equals("true")){
+                            System.out.println("User logged correctly.");
+                        }
+                        else{
+                            System.out.println("User doesn't exist.");
+                        }
                 }
             } while (running);
         }
@@ -65,7 +46,7 @@ class Client {
         }
     }
 
-    public static void mainMenu(){
+    public static void mainMenu() {
         System.out.println("""
                 [1] Deposit 
                 [2] Withdraw
@@ -75,25 +56,20 @@ class Client {
                 """);
     }
 
-    public static String login(Socket socket, String username, String password){
-        try{
-            OutputStream out = socket.getOutputStream();
-            String request = "LOGIN: " + username + ", " + password +"\n";
-            out.write(request.getBytes());
-            return request;
 
-        }catch(IOException e){
-            return "Error: "+e;
-        }
-    }
+    public static String login(String username, String password) {
+        try {
+            OutputStream output = sk.getOutputStream();
+            DataOutputStream data = new DataOutputStream(output);
+            data.writeUTF(username + " " + password);
+            data.flush();
+            InputStream input_stream = sk.getInputStream();
+            DataInputStream data2 = new DataInputStream(input_stream);
+            return data2.readUTF();
 
-    public static String getBalance(String username){
-        try{
-            InputStream inputStream = sk.getInputStream();
-            DataInputStream data = new DataInputStream(inputStream);
-            return data.readUTF();
-        }catch(IOException e){
-            return "Error: "+e;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error";
         }
     }
 }

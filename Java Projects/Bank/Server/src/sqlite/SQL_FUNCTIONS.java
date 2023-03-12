@@ -67,8 +67,9 @@ public class SQL_FUNCTIONS {
     }
 
     // works
-    public static String login(String user, String password) throws SQLException {
-        String response = null;
+    public static boolean login(String user, String password) throws SQLException {
+        // String response = null;
+        boolean logged = false;
         if(connectionHandle()){
             String login_str = "SELECT * FROM bank WHERE user = ? AND password = ?";
             PreparedStatement stat = connection.prepareStatement(login_str);
@@ -77,13 +78,14 @@ public class SQL_FUNCTIONS {
             ResultSet rs = stat.executeQuery();
 
             if(rs.next()){
-                response = "SUCCESS_LOGIN";
+                logged = true;
+
             }
             else{
-                response = "FAILED_LOGIN";
+                logged = false;
             }
         }
-        return response;
+        return logged;
     }
 
     public static String deposit(double moneyInput, String username) throws SQLException {
