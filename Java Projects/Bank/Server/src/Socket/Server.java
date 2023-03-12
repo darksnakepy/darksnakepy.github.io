@@ -11,8 +11,6 @@ class Server {
         boolean running = true;
 
         ServerSocket serverSock = null;
-        static Socket sk = null;
-
         System.out.println("Socket Created");
 
         try {
@@ -43,6 +41,7 @@ class Server {
                             if(login(msg.split("\\s+"))) {
                                 break;
                             }
+
                         }catch(IOException e){
                             System.out.println(e.getMessage());
                         }
@@ -58,7 +57,7 @@ class Server {
     }
 
     public static boolean login(String credentials[]) throws SQLException {
-        System.out.println(credentials[0] + " " + credentials[1]);
+        //System.out.println(credentials[0] + " " + credentials[1]);
         boolean is_logged = false;
         if (sql.login(credentials[0], credentials[1])) {
             send(sk,"true");
@@ -71,6 +70,16 @@ class Server {
         return is_logged;
     }
 
+    public static void deposit(double money, String user) throws SQLException {
+        if(sql.deposit(money, user)){
+            send(sk, "successful_deposit");
+        }
+        else{
+            send(sk,"failed_deposit");
+        }
+    }
+
+    //sends data
     public static void send(Socket sk, String argument) {
         try {
             if(sk!=null) {

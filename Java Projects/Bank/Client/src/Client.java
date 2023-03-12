@@ -7,8 +7,8 @@ class Client {
     static Socket sk = null;
 
     public static void main(String[] args) {
-        String user_global;
-
+        String user_global = "";
+        boolean userlogged = false;
         boolean running = false;
         if (initialize()) {
             running = true;
@@ -28,10 +28,42 @@ class Client {
                         String response = login(user, pass);
                         if(response.equals("true")){
                             System.out.println("User logged correctly.");
+                            userlogged = true;
+                            user_global = user;
+                            break;
                         }
                         else{
                             System.out.println("User doesn't exist.");
                         }
+                    default:
+                        System.out.println("An error occurred");
+                        break;
+                }
+                if(userlogged){
+                    do{
+                        mainMenu();
+                        choice = scanner.nextInt();
+                        switch(choice){
+                            case 1:
+                                System.out.println("Insert the amount of money you want to deposit: ");
+                                double inputMoney = scanner.nextDouble();
+                                try {
+                                    String deposit_response = deposit(inputMoney, user_global);
+                                    if(deposit_response.equals("successful_deposit")){
+                                        System.out.println("Done.");
+                                    }
+                                    else {
+                                        System.out.println("An error occurred: ");
+                                    }
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                            case 2:
+
+
+                        }
+                    }while(choice!=5);
                 }
             } while (running);
         }
@@ -53,8 +85,12 @@ class Client {
                 [3] View your balance
                 [4] View your movement list
                 [5] Exit
+                
+                Choose an option:
                 """);
     }
+
+    // to code register function
 
 
     public static String login(String username, String password) {
@@ -72,4 +108,17 @@ class Client {
             return "Error";
         }
     }
+
+    public static String deposit(double moneyInput, String user) throws IOException {
+        OutputStream output = sk.getOutputStream();
+        DataOutputStream data = new DataOutputStream(output);
+        data.writeUTF(moneyInput + " " + user);
+        data.flush();
+        InputStream input_stream = sk.getInputStream();
+        DataInputStream data2 = new DataInputStream(input_stream);
+        return data2.readUTF();
+    }
+
+
+
 }

@@ -88,7 +88,7 @@ public class SQL_FUNCTIONS {
         return logged;
     }
 
-    public static String deposit(double moneyInput, String username) throws SQLException {
+    public static boolean deposit(double moneyInput, String username) throws SQLException {
         try {
             String sql_deposit = "UPDATE bank SET balance = balance + ? WHERE user = ? AND balance >= ?";
             PreparedStatement stat = connection.prepareStatement(sql_deposit);
@@ -102,9 +102,9 @@ public class SQL_FUNCTIONS {
                 stat.setString(1, username);
                 ResultSet rs = stat.executeQuery();
             }
-            return "DEPOSIT_SUCCESS";
+            return true;
         } catch (SQLException e) {
-            return e.getMessage();
+            return false;
         }
     }
 
