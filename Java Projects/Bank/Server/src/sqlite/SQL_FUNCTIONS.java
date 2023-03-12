@@ -25,16 +25,14 @@ public class SQL_FUNCTIONS {
                 + "	id integer PRIMARY KEY,\n"
                 + "	user text NOT NULL,\n"
                 + " password text NOT NULL,\n"
-                + "	balance real,\n"
+                + "	balance double,\n"
                 + "	movement_list text \n"
                 + ");";
 
         try{
             Statement statement = connection.createStatement();
             statement.execute(table);
-            System.out.println("Table Created");
         }catch(SQLException e){
-            System.out.println("Error " + e);
         }
     }
 
@@ -52,7 +50,6 @@ public class SQL_FUNCTIONS {
             return "REGISTERED";
         }
         catch (SQLException e) {
-            System.out.println(e.getMessage());
             return e.getMessage();
         }
     }
@@ -81,25 +78,24 @@ public class SQL_FUNCTIONS {
 
             if(rs.next()){
                 response = "SUCCESS_LOGIN";
-                System.out.println("USER EXISTS");
             }
             else{
                 response = "FAILED_LOGIN";
-                System.out.println("USER doesnt exist");
             }
         }
         return response;
     }
 
-    public static String deposit(String moneyInput, String username) throws SQLException {
+    public static String deposit(double moneyInput, String username) throws SQLException {
         try {
-            String sql_deposit = "UPDATE bank SET balance = balance - ? WHERE username = ? AND balance >= ?";
+            String sql_deposit = "UPDATE bank SET balance = balance + ? WHERE user = ? AND balance >= ?";
             PreparedStatement stat = connection.prepareStatement(sql_deposit);
-            stat.setDouble(1, Double.parseDouble(moneyInput));
+            stat.setDouble(1, moneyInput);
             stat.setString(2, username);
+            stat.setDouble(3, balance(username));
             int rows = stat.executeUpdate();
             if (rows > 0) {
-                sql_deposit = "SELECT balance FROM bank WHERE username = ?";
+                sql_deposit = "SELECT balance FROM bank WHERE user = ?";
                 stat = connection.prepareStatement(sql_deposit);
                 stat.setString(1, username);
                 ResultSet rs = stat.executeQuery();
@@ -110,15 +106,17 @@ public class SQL_FUNCTIONS {
         }
     }
 
-    public static String withdraw(String moneyInput, String username){
+    //works
+    public static String withdraw(double moneyInput, String username){
         try {
-            String sql_withdraw = "UPDATE bank SET balance = balance - ? WHERE username = ? AND balance >= ?";
+            String sql_withdraw = "UPDATE bank SET balance = balance - ? WHERE user = ? AND balance >= ?";
             PreparedStatement stat = connection.prepareStatement(sql_withdraw);
-            stat.setDouble(1, Double.parseDouble(moneyInput));
+            stat.setDouble(1, moneyInput);
             stat.setString(2, username);
+            stat.setDouble(3, balance(username));
             int rows = stat.executeUpdate();
             if (rows > 0) {
-                sql_withdraw = "SELECT balance FROM bank WHERE username = ?";
+                sql_withdraw = "SELECT balance FROM bank WHERE user = ?";
                 stat = connection.prepareStatement(sql_withdraw);
                 stat.setString(1, username);
                 ResultSet rs = stat.executeQuery();
@@ -129,14 +127,19 @@ public class SQL_FUNCTIONS {
         }
     }
 
-    public static String balance(String user) {
+
+    // works
+    public static Double balance(String user) {
         try {
-            String balance_str = "SELECT balance FROM bank WHERE username = ?";
-            Statement stat = connection.createStatement();
-            ResultSet rs = stat.executeQuery(balance_str);
-            return rs.getString("balance");
+            String balance_str = "SELECT balance FROM bank WHERE user = ?";
+            PreparedStatement stat = connection.prepareStatement(balance_str);
+            stat.setString(1, user);
+            ResultSet rs = stat.executeQuery();
+            double balance = rs.getDouble("balance");
+            return balance;
+
         }catch(SQLException e) {
-            return "Error"+e;
+            return null;
         }
     }
 }

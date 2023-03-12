@@ -96,8 +96,4 @@ class Client {
             return "Error: "+e;
         }
     }
-
-
-
-
 }

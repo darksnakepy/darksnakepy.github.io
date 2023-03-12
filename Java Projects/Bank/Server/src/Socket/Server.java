@@ -37,10 +37,13 @@ class Server {
             if (running) {
                 System.out.println("Connected at server at " + sk.getInetAddress().getHostName());
                 if(sql.connectionHandle()){
+                    // testing sql functions
                     System.out.println("DB EXISTS");
-                    sql.register("dio", "cane", 5000, "gesu cristo fritto misto");
-                    sql.login("dio", "cane");
-
+                    //sql.register("dio", "cane", 5000.0, "gesu cristo fritto misto");
+                    //sql.login("dio", "cane");
+                    //sql.balance("dio");
+                    //sql.withdraw(3000.0, "dio");
+                    //sql.deposit(3000, "dio");
                 }
                 try {
                     BufferedInputStream ib = new BufferedInputStream(sk.getInputStream());
