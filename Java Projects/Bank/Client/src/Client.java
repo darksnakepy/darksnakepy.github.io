@@ -97,7 +97,7 @@ class Client {
         try {
             OutputStream output = sk.getOutputStream();
             DataOutputStream data = new DataOutputStream(output);
-            data.writeUTF(username + " " + password);
+            data.writeUTF("login;"+username + ";" + password);
             data.flush();
             InputStream input_stream = sk.getInputStream();
             DataInputStream data2 = new DataInputStream(input_stream);
@@ -118,7 +118,5 @@ class Client {
         DataInputStream data2 = new DataInputStream(input_stream);
         return data2.readUTF();
     }
-
-
 
 }

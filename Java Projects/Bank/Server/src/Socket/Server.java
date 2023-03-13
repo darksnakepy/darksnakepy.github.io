@@ -38,9 +38,23 @@ class Server {
                             InputStream inp = sk.getInputStream();
                             DataInputStream data = new DataInputStream(inp);
                             String msg = data.readUTF();
-                            if(login(msg.split("\\s+"))) {
+                            /*if(login(msg.split("\\s+"))) {
                                 break;
                             }
+                             */
+                            String[] action = msg.split(";");
+                            switch(action[0]){
+                                case "login"->{
+                                    if(login(msg.split(";"))) {
+                                        System.out.println("User logged correcty");
+                                    }
+                                    if()
+                                }
+
+
+                            }
+
+
 
                         }catch(IOException e){
                             System.out.println(e.getMessage());
@@ -59,7 +73,7 @@ class Server {
     public static boolean login(String credentials[]) throws SQLException {
         //System.out.println(credentials[0] + " " + credentials[1]);
         boolean is_logged = false;
-        if (sql.login(credentials[0], credentials[1])) {
+        if (sql.login(credentials[1], credentials[2])) {
             send(sk,"true");
             is_logged = true;
         }
