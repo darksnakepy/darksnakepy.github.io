@@ -48,14 +48,22 @@ class Server {
                                     if(login(msg.split(";"))) {
                                         System.out.println("User logged correcty");
                                     }
-                                    if()
                                 }
-
-
+                                case "deposit"->{
+                                    if(deposit(action[1], action[2])){
+                                        System.out.println("Deposit by client");
+                                    }
+                                }
+                                case "withdraw"->{
+                                    if(withdraw(action[1], action[2])){
+                                        System.out.println("Withdraw by client");
+                                    }
+                                }
+                                case "balance"->{
+                                    balance(action[1]);
+                                    System.out.println("Balance");
+                                }
                             }
-
-
-
                         }catch(IOException e){
                             System.out.println(e.getMessage());
                         }
@@ -84,12 +92,26 @@ class Server {
         return is_logged;
     }
 
-    public static void deposit(double money, String user) throws SQLException {
-        if(sql.deposit(money, user)){
+    public static boolean deposit(String money, String user) throws SQLException {
+        if(sql.deposit(Double.parseDouble(money), user)){
             send(sk, "successful_deposit");
+            return true;
         }
+
         else{
             send(sk,"failed_deposit");
+            return false;
+        }
+    }
+
+    public static boolean withdraw(String money, String user) throws SQLException {
+        if(sql.withdraw(user, Double.parseDouble(money))){
+            send(sk, "successful_withdraw");
+            return true;
+        }
+        else{
+            send(sk,"failed_withdraw");
+            return false;
         }
     }
 
@@ -106,6 +128,14 @@ class Server {
             }
         } catch (Exception e) {
             System.out.println("Error"+ e.getMessage());
+        }
+    }
+    public static boolean balance(String user) {
+        try {
+            sql.balance(user);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

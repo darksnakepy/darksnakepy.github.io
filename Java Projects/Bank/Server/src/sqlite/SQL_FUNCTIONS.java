@@ -109,7 +109,7 @@ public class SQL_FUNCTIONS {
     }
 
     //works
-    public static String withdraw(double moneyInput, String username){
+    public static boolean withdraw(String username, double moneyInput){
         try {
             String sql_withdraw = "UPDATE bank SET balance = balance - ? WHERE user = ? AND balance >= ?";
             PreparedStatement stat = connection.prepareStatement(sql_withdraw);
@@ -123,9 +123,9 @@ public class SQL_FUNCTIONS {
                 stat.setString(1, username);
                 ResultSet rs = stat.executeQuery();
             }
-            return "WITHDRAW_SUCCESS";
+            return true;
         } catch (SQLException e) {
-            return e.getMessage();
+            return false;
         }
     }
 

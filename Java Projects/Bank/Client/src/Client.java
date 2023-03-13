@@ -60,14 +60,33 @@ class Client {
                                 }
                                 break;
                             case 2:
-
-
+                                System.out.println("Insert the amount of money you want to withdraw: ");
+                                double money = scanner.nextDouble();
+                                try {
+                                    String deposit_response = withdraw(money, user_global);
+                                    if (deposit_response.equals("successful_withdraw")) {
+                                        System.out.println("Done.");
+                                    } else {
+                                        System.out.println("An error occurred: ");
+                                    }
+                                } catch (IOException e) {
+                                    System.out.println("Error" + e.getMessage());
+                                }
+                                break;
+                            case 3:
+                                try {
+                                    balance(user_global);
+                                }catch(IOException e){
+                                    System.out.println("Error" + e.getMessage());
+                                }
+                                break;
                         }
-                    }while(choice!=5);
-                }
-            } while (running);
+                        }while(choice!=5);
+                    }
+                }while (running);
+            }
         }
-    }
+
 
     static boolean initialize() {
         try {
@@ -112,11 +131,29 @@ class Client {
     public static String deposit(double moneyInput, String user) throws IOException {
         OutputStream output = sk.getOutputStream();
         DataOutputStream data = new DataOutputStream(output);
-        data.writeUTF(moneyInput + " " + user);
+        data.writeUTF("deposit;"+moneyInput + ";" + user);
         data.flush();
         InputStream input_stream = sk.getInputStream();
         DataInputStream data2 = new DataInputStream(input_stream);
         return data2.readUTF();
     }
 
+    public static String withdraw(double moneyInput, String user) throws IOException {
+        OutputStream output = sk.getOutputStream();
+        DataOutputStream data = new DataOutputStream(output);
+        data.writeUTF("withdraw;"+moneyInput + ";" + user);
+        data.flush();
+        InputStream input_stream = sk.getInputStream();
+        DataInputStream data2 = new DataInputStream(input_stream);
+        return data2.readUTF();
+    }
+
+    public static String balance(String user) throws IOException {
+        OutputStream output = sk.getOutputStream();
+        DataOutputStream data = new DataOutputStream(output);
+        data.writeUTF("balance;"+user);
+        InputStream input_stream = sk.getInputStream();
+        DataInputStream data2 = new DataInputStream(input_stream);
+        return data2.readUTF();
+    }
 }
