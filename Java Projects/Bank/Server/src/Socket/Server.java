@@ -43,6 +43,7 @@ class Server {
                                    try {
                                        if (register(action[1], action[2], Double.parseDouble(action[3]), action[4])) {
                                            System.out.println("User registered");
+                                           update_list(action[1], "User Created in the database");
                                        }
                                    }catch (SQLException e){
                                        System.out.println("Error"+e.getMessage());
@@ -57,11 +58,15 @@ class Server {
                                     if(deposit(action[1], action[2])){
                                         System.out.println("Deposit by client");
                                     }
+                                    if(update_list(action[2], "User deposited "+action[1] +" $")){
+                                        System.out.println("deposit list");
+                                    };
                                 }
                                 case "withdraw"->{
                                     if(withdraw(action[1], action[2])){
                                         System.out.println("Withdraw by client");
                                     }
+                                    update_list(action[2], "User took "+action[1] +" $");
                                 }
                                 case "balance"->{
                                     balance(action[1]);
@@ -150,11 +155,20 @@ class Server {
             System.out.println("Error"+ e.getMessage());
         }
     }
-    public static boolean balance(String user) {
+    public static Double balance(String user) {
         try {
-            sql.balance(user);
-            return true;
+            double balance = sql.balance(user);
+            return balance;
         } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean update_list(String user, String text){
+        try {
+            sql.movementUpdate(user,text);
+            return true;
+        } catch (SQLException e) {
             return false;
         }
     }

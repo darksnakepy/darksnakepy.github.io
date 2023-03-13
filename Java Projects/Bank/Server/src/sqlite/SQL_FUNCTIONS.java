@@ -29,18 +29,18 @@ public class SQL_FUNCTIONS {
                 + "	movement_list text \n"
                 + ");";
 
-        try{
+        try {
             Statement statement = connection.createStatement();
             statement.execute(table);
-        }catch(SQLException e){
+        } catch (SQLException e) {
         }
     }
 
     // works (TO FIX: balance and movement list can't be null)
 
-    public boolean register(String name, String password, double balance, String movement_list){
+    public boolean register(String name, String password, double balance, String movement_list) {
         String insert_data = "INSERT INTO bank(user,password, balance, movement_list) VALUES(?,?,?,?)";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(insert_data);
             statement.setString(1, name);
             statement.setString(2, password);
@@ -48,8 +48,7 @@ public class SQL_FUNCTIONS {
             statement.setString(4, movement_list);
             statement.executeUpdate();
             return true;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             return false;
         }
     }
@@ -70,18 +69,17 @@ public class SQL_FUNCTIONS {
     public static boolean login(String user, String password) throws SQLException {
         // String response = null;
         boolean logged = false;
-        if(connectionHandle()){
+        if (connectionHandle()) {
             String login_str = "SELECT * FROM bank WHERE user = ? AND password = ?";
             PreparedStatement stat = connection.prepareStatement(login_str);
             stat.setString(1, user);
             stat.setString(2, password);
             ResultSet rs = stat.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 logged = true;
 
-            }
-            else{
+            } else {
                 logged = false;
             }
         }
@@ -109,7 +107,7 @@ public class SQL_FUNCTIONS {
     }
 
     //works
-    public static boolean withdraw(String username, double moneyInput){
+    public static boolean withdraw(String username, double moneyInput) {
         try {
             String sql_withdraw = "UPDATE bank SET balance = balance - ? WHERE user = ? AND balance >= ?";
             PreparedStatement stat = connection.prepareStatement(sql_withdraw);
@@ -140,8 +138,27 @@ public class SQL_FUNCTIONS {
             double balance = rs.getDouble("balance");
             return balance;
 
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             return null;
+        }
+    }
+
+    public static boolean movementUpdate(String user, String text) throws SQLException {
+        try {
+            String update = "UPDATE bank SET movement_list = ? WHERE user = ?";
+            PreparedStatement stat = connection.prepareStatement(update);
+            stat.setString(1, text);
+            stat.setString(2, user);
+            int rows = stat.executeUpdate();
+            if (rows > 0) {
+                update = "SELECT movement_list FROM bank WHERE user = ?";
+                stat = connection.prepareStatement(update);
+                stat.setString(1, user);
+                ResultSet rs = stat.executeQuery();
+            }
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
     }
 }
