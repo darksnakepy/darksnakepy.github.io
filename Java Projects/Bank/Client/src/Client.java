@@ -19,17 +19,28 @@ class Client {
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
-                        break;
-                    case 2:
                         System.out.println("Insert the username:\n>");
                         String user = scanner.next();
                         System.out.println("Insert the password:\n>");
                         String pass = scanner.next();
-                        String response = login(user, pass);
-                        if(response.equals("true")){
+                        System.out.println("Insert an inital balance:\n>");
+                        double init_balance = scanner.nextDouble();
+                        String movement_list = "Account created.";
+                        String response = register(user,pass,init_balance,movement_list);
+                        if(response.equals("true")) {
+                            System.out.println("User logged correctly.");
+                            break;
+                        }
+                    case 2:
+                        System.out.println("Insert the username:\n>");
+                        String userlogin = scanner.next();
+                        System.out.println("Insert the password:\n>");
+                        String passlogin = scanner.next();
+                        String responseLogin = login(userlogin, passlogin);
+                        if(responseLogin.equals("true")){
                             System.out.println("User logged correctly.");
                             userlogged = true;
-                            user_global = user;
+                            user_global = userlogin;
                             break;
                         }
                         else{
@@ -81,7 +92,7 @@ class Client {
                                 }
                                 break;
                         }
-                        }while(choice!=5);
+                        }while(choice!=4);
                     }
                 }while (running);
             }
@@ -102,8 +113,7 @@ class Client {
                 [1] Deposit 
                 [2] Withdraw
                 [3] View your balance
-                [4] View your movement list
-                [5] Exit
+                [4] Exit
                 
                 Choose an option:
                 """);
@@ -111,7 +121,21 @@ class Client {
 
     // to code register function
 
+    public static String register(String user, String password, double balance, String movement_list){
+        try {
+            OutputStream output = sk.getOutputStream();
+            DataOutputStream data = new DataOutputStream(output);
+            data.writeUTF("register;"+user + ";" + password+ ";" + balance+";"+movement_list);
+            data.flush();
+            InputStream input_stream = sk.getInputStream();
+            DataInputStream data2 = new DataInputStream(input_stream);
+            return data2.readUTF();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error";
+        }
+    }
     public static String login(String username, String password) {
         try {
             OutputStream output = sk.getOutputStream();

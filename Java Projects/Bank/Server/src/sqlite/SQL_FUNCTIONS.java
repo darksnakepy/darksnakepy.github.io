@@ -38,7 +38,7 @@ public class SQL_FUNCTIONS {
 
     // works (TO FIX: balance and movement list can't be null)
 
-    public String register(String name, String password, double balance, String movement_list){
+    public boolean register(String name, String password, double balance, String movement_list){
         String insert_data = "INSERT INTO bank(user,password, balance, movement_list) VALUES(?,?,?,?)";
         try{
             PreparedStatement statement = connection.prepareStatement(insert_data);
@@ -47,10 +47,10 @@ public class SQL_FUNCTIONS {
             statement.setDouble(3, balance);
             statement.setString(4, movement_list);
             statement.executeUpdate();
-            return "REGISTERED";
+            return true;
         }
         catch (SQLException e) {
-            return e.getMessage();
+            return false;
         }
     }
 

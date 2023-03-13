@@ -27,11 +27,6 @@ class Server {
                 if (sql.connectionHandle()) {
                     // testing sql functions
                     System.out.println("DB IS READY");
-                    //sql.register("dio", "cane", 5000.0, "gesu cristo fritto misto");
-                    //sql.login("dio", "cane");
-                    //sql.balance("dio");
-                    //sql.withdraw(3000.0, "dio");
-                    //sql.deposit(3000, "dio");
 
                     while (true) {
                         try {
@@ -44,6 +39,15 @@ class Server {
                              */
                             String[] action = msg.split(";");
                             switch(action[0]){
+                               case "register"->{
+                                   try {
+                                       if (register(action[1], action[2], Double.parseDouble(action[3]), action[4])) {
+                                           System.out.println("User registered");
+                                       }
+                                   }catch (SQLException e){
+                                       System.out.println("Error"+e.getMessage());
+                                   }
+                               }
                                 case "login"->{
                                     if(login(msg.split(";"))) {
                                         System.out.println("User logged correcty");
@@ -77,6 +81,22 @@ class Server {
 
         }
     }
+
+    public static boolean register(String user, String pass, double balance, String movement_list) throws SQLException {
+        //System.out.println(credentials[0] + " " + credentials[1]);
+        boolean is_registered = false;
+        if (sql.register(user, pass, balance, movement_list)) {
+            send(sk,"true");
+            is_registered = true;
+        }
+        else{
+            send(sk,"false");
+            is_registered = false;
+        }
+        return is_registered;
+    }
+
+
 
     public static boolean login(String credentials[]) throws SQLException {
         //System.out.println(credentials[0] + " " + credentials[1]);
