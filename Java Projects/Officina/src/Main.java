@@ -31,11 +31,11 @@ class Officina {
             switch(veicolo.getMarca()) {
                 case "Lamborghini":
                     veicolo.changePrice(veicolo, 5000);
-                    veicolo.cambiaStatus(veicolo);
+                    veicolo.cambiaStatus();
                     break;
                 case "Mustang":
                     veicolo.changePrice(veicolo, 4000);
-                    veicolo.cambiaStatus(veicolo);
+                    veicolo.cambiaStatus();
                     break;
             }
             return "riparato";
@@ -74,24 +74,24 @@ class Veicolo{
     }
 
     public float price(){
-        return price;
+        return this.price;
     }
 
     public boolean visualizzaStato(){
         return macchinaRotta;
     }
 
-    public boolean cambiaStatus(Veicolo veicolo){
+    public boolean cambiaStatus(){
         this.macchinaRotta = false;
         return this.macchinaRotta;
     }
-    
-    public float changePrice(Veicolo veicolo, int value) { // to fix change price
-        if(!veicolo.macchinaRotta){
-            return veicolo.price;
+
+    public float changePrice(Veicolo veicolo, float value) { // to fix change price
+        if (veicolo.macchinaRotta) {
+            return this.price = value;
         }
-        else{
-            return veicolo.price;
+        else {
+            return 0;
         }
     }
 }
