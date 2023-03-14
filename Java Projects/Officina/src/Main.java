@@ -17,10 +17,10 @@ class Main{
         Veicolo veicolo2 = new Veicolo("615", "undefined", "Mustang", true);
         Officina officina = new Officina();
 
-        String response = officina.ripara(veicolo1);
-        System.out.println(response);
-        System.out.println("Il prezzo è di: "+veicolo2.price());
-
+        officina.ripara(veicolo1);
+        officina.ripara(veicolo2);
+        System.out.println("Il prezzo di riparazione della "+veicolo1.getMarca() + "è di: "+veicolo1.price());
+        System.out.println("Il prezzo di riparazione della "+veicolo2.getMarca() + "è di: "+veicolo2.price());
     }
 }
 
@@ -74,7 +74,7 @@ class Veicolo{
     }
 
     public float price(){
-        return this.price;
+        return price;
     }
 
     public boolean visualizzaStato(){
@@ -88,7 +88,7 @@ class Veicolo{
 
     public float changePrice(Veicolo veicolo, float value) { // to fix change price
         if (veicolo.macchinaRotta) {
-            return this.price = value;
+            return price = value;
         }
         else {
             return 0;
