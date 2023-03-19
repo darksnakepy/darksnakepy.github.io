@@ -9,6 +9,9 @@ let grid = [
 let xWins = 0
 let oWins = 0
 
+let matchWinner = false
+let is_bot_playing = false
+
 let x_written = false
 let value = null
 let counter = 0
@@ -42,6 +45,7 @@ function reset() {
         [null, null, null],  
         [null, null, null]  
     ]
+    matchWinner = false
     document.querySelector(".winner").style.display = "none"
 
     x_written = false;
@@ -49,19 +53,43 @@ function reset() {
     counter = 0
 }
 
-function gameSession(){
-    th.forEach(th=>th.addEventListener("click", ()=>{
-        if (th.textContent == "") {
-            if (!x_written) {
-                value = "X"
-                th.innerHTML = value            
-                x_written = true
-            } else {
-                value = "O"
-                th.innerHTML = value
-                x_written = false
+function getEmptyCells(grid){
+    let emptyCells = []
+    for(let i = 0; i<3; i++){
+        for(let j = 0; j<3; j++){
+            if(grid[i][j] === ""){
+                emptyCells.push([i, j])
             }
         }
+    }
+    return emptyCells
+}
+
+
+function gameSession(){
+    th.forEach(th=>th.addEventListener("click", ()=>{
+        if(!matchWinner){
+            if (th.textContent == "") {
+                if(!is_bot_playing){
+                    if (!x_written) {
+                        value = "X"
+                        th.innerHTML = value            
+                        x_written = true
+                    } else {
+                        value = "O"
+                        th.innerHTML = value
+                        x_written = false
+                    }
+            }else{
+                switch(difficulty){
+                    case "easy":
+                        break
+                    case "impossible":
+                        break
+                }
+            }
+        }
+        
 
     counter++
     console.log(counter)
@@ -73,26 +101,24 @@ function gameSession(){
         document.querySelector(".winner").style.display = "block"
         document.querySelector(".winner").innerHTML = "WINNER: X"
         xWins++
+        matchWinner = true
         document.querySelector(".xwins").innerHTML = "X WINS:" + xWins
-        console.log("x won")
-        th.onclick = false
     } 
     else if (checker(grid) == "O") {
         document.querySelector("#status").style.display = "block"
         document.querySelector(".winner").style.display = "block"
         document.querySelector(".winner").innerHTML = "WINNER: O"
         oWins++
+        matchWinner = true
         document.querySelector(".owins").innerHTML = "O WINS:" + oWins
-        console.log("o won")
-        th.onclick = false
     } 
 
     else if (counter == 9) {
         document.querySelector("#status").style.display = "block"
         document.querySelector(".winner").style.display = "block"
         document.querySelector(".winner").innerHTML = "Draw"
-        th.onclick = false
     }
+ }
     }))
     
 }
