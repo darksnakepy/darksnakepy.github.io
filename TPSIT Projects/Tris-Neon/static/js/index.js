@@ -10,8 +10,8 @@ let xWins = 0
 let oWins = 0
 
 let matchWinner = false
-let is_bot_playing = false
-
+let is_bot_playing = true
+let difficulty = "easy"
 let x_written = false
 let value = null
 let counter = 0
@@ -79,19 +79,38 @@ function gameSession(){
                         value = "O"
                         th.innerHTML = value
                         x_written = false
+                        counter++
                     }
             }else{
+                value = "X"
+                th.innerHTML = value
+                grid[th.parentNode.getAttribute("row")][th.getAttribute("cell")] = value           
+                counter++
                 switch(difficulty){
                     case "easy":
-                        break
+                        let found = false
+                        for(let i = 0; i<grid.length; i++){
+                            if(!found){
+                            for(let j = 0; j < grid[i].length; j++){
+                                if(grid[i][j] == null){
+                                    found = true
+                                    grid[i][j] = "O"
+                                    document.querySelector(`[row='${i}'] [cell='${j}']`).innerHTML = "O"
+                                    counter++
+                                    break
+                                }
+                            }
+                        }
+                        else{
+                            break
+                        }
+                    }
                     case "impossible":
                         break
                 }
             }
         }
         
-
-    counter++
     console.log(counter)
 
     grid[th.parentNode.getAttribute("row")][th.getAttribute("cell")] = value
