@@ -50,8 +50,9 @@ a:hover{
     cursor: pointer;
     letter-spacing: 1px;
     font-weight: bold;
-    filter: drop-shadow(0 0 15px #581cb8) drop-shadow(0 0 15px #581cb8) contrast(1) brightness(1);
+    filter: drop-shadow(0 0 5px #581cb8) drop-shadow(0 0 10px #581cb8) contrast(1) brightness(1);
     transition: .3s;
+    margin-bottom: 40px;
 }
 
 .begin-button:hover{

@@ -1,4 +1,10 @@
 let th = document.querySelectorAll("th")
+let diffucultyButton = document.querySelector("#easyBut")
+
+diffucultyButton.addEventListener("click", function(){
+    is_bot_playing = true
+    difficulty = "easy"
+})
 
 let grid = [
             [null, null, null],
@@ -8,10 +14,9 @@ let grid = [
 
 let xWins = 0
 let oWins = 0
-
+let difficulty
 let matchWinner = false
 let is_bot_playing = true
-let difficulty = "easy"
 let x_written = false
 let value = null
 let counter = 0
