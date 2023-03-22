@@ -1,25 +1,27 @@
-let th = document.querySelectorAll("th")
-let diffucultyButton = document.querySelector("#easyBut")
+let xWins = 0
+let oWins = 0
+let difficulty
+let matchWinner = false
+let is_bot_playing = false
+let x_written = false
+let value = null
+let counter = 0
 
-diffucultyButton.addEventListener("click", function(){
-    is_bot_playing = true
-    difficulty = "easy"
+
+let th = document.querySelectorAll("th")
+let difficultyButton = document.querySelector("#buttonEasy")
+if(difficultyButton){
+    difficulty.addEventListener("click", ()=>{
+        is_bot_playing = true
+        difficulty = "easy"
 })
+}
 
 let grid = [
             [null, null, null],
             [null, null, null],
             [null, null, null]
            ]
-
-let xWins = 0
-let oWins = 0
-let difficulty
-let matchWinner = false
-let is_bot_playing = true
-let x_written = false
-let value = null
-let counter = 0
 
 
 function checker(grid) {
@@ -58,17 +60,17 @@ function reset() {
     counter = 0
 }
 
-function getEmptyCells(grid){
+/*function getEmptyCells(grid){
     let emptyCells = []
-    for(let i = 0; i<3; i++){
-        for(let j = 0; j<3; j++){
+    for(let i = 0; i<grid.length; i++){
+        for(let j = 0; j<grid.length; j++){
             if(grid[i][j] === ""){
                 emptyCells.push([i, j])
             }
         }
     }
     return emptyCells
-}
+}*/
 
 
 function gameSession(){
