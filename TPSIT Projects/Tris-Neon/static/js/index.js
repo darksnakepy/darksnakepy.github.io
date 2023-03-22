@@ -10,12 +10,11 @@ let counter = 0
 
 let th = document.querySelectorAll("th")
 let difficultyButton = document.querySelector("#buttonEasy")
-if(difficultyButton){
-    difficulty.addEventListener("click", ()=>{
-        is_bot_playing = true
-        difficulty = "easy"
+
+difficultyButton.addEventListener("click", ()=>{
+    is_bot_playing = true
+    difficulty = "easy"
 })
-}
 
 let grid = [
             [null, null, null],
