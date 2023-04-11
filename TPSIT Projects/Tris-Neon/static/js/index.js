@@ -7,13 +7,14 @@ let x_written = false
 let value = null
 let counter = 0
 
-
+let checkbox = document.querySelector("#bot-checkbox")
 let th = document.querySelectorAll("th")
 let difficultyButton = document.querySelector("#buttonEasy")
 
-difficultyButton.addEventListener("click", ()=>{
-    is_bot_playing = true
-    difficulty = "easy"
+checkbox.addEventListener('change', function() {
+        difficulty="easy"
+        is_bot_playing = true
+        
 })
 
 let grid = [

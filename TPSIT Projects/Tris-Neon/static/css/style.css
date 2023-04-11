@@ -86,7 +86,7 @@ a:hover{
 }
 
 .reset {
-    margin-top: 10px;
+    margin-top: 20px;
     color: #581cb8;
     background-color: black;
     border: 2px solid #581cb8;
@@ -126,3 +126,10 @@ a:hover{
 }
 
 
+label {
+    color: white;
+}
+
+#bot-checkbox{
+    margin-bottom: 10px;
+}
