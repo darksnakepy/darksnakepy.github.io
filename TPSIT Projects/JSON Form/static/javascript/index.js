@@ -10,10 +10,10 @@ button.addEventListener("click", (e)=>{
     let gender = document.querySelector("#gender").value
 
     let users = {
-        "name" : name,
-        "last-name" : last_name,
-        "age": age,
-        "gender": gender
+        name : name,
+        last_name : last_name,
+        age: age,
+        gender: gender
     }
 
     data.push(users)
@@ -21,4 +21,6 @@ button.addEventListener("click", (e)=>{
     data.forEach(user=>{
         document.querySelector(".display").innerHTML += JSON.stringify(user) + "<br/>"
     })
+
+    data.pop(users)
 })
