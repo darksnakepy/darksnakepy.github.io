@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane id="pannelloPrincipale" fx:id="sfondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #041014;" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
@@ -22,4 +23,11 @@
             </menus>
         </MenuBar>
     </top>
+   <center>
+      <ImageView fx:id="imageviewer" fitHeight="243.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../../../java/com/dentist/dentist.png" />
+         </image>
+      </ImageView>
+   </center>
 </BorderPane>
