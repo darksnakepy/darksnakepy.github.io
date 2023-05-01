@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane id="pannelloPrincipale" fx:id="sfondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #041014;" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Administration">
+                    <items>
+                  <MenuItem mnemonicParsing="false" text="Patient's Data" />
+                        <MenuItem mnemonicParsing="false" text="Registration form" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Info">
+                    <items>
+                        <MenuItem fx:id="aboutButton" mnemonicParsing="false" text="About us" />
+                  <MenuItem mnemonicParsing="false" text="Dottore" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>
