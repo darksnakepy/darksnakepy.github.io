@@ -45,9 +45,14 @@ body{
     margin-bottom: 178px;
 }
 
+#chucknorris-gif{
+    width: 104px;
+    height: 124px;
+}
+
 .joke{
     font-family: 'Concert One', serif;
-    font-weight: 400;
+    font-weight: 800;
     font-size: 19px;
     line-height: 22.8px;
     text-align: center;
@@ -69,6 +74,7 @@ body{
     border: white;
     margin-bottom: 156px;
 }
+
 .buttons{
     display: flex;
     align-items: center;

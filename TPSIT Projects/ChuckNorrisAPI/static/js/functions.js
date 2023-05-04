@@ -1,6 +1,4 @@
 let btn = document.querySelector(".load-joke")
-let copyBtn = document.querySelector("copy")
-
 let joke = document.querySelector(".joke")
 let joke_container = document.querySelector(".joke-container")
 
@@ -15,7 +13,7 @@ btn?.addEventListener("click", async (e)=>{
         })
         .then(jokegen =>{
             if(jokegen.value == undefined){
-                joke_container.innerHTML = "A"
+                joke_container.innerHTML = "Select a category"
                 return
             }
 
@@ -28,7 +26,7 @@ btn?.addEventListener("click", async (e)=>{
 })
 
 
-/*copyBtn.addEventListener("click", async ()=>{
-    await navigator.clipboard.writeText(joke_container);
+document.querySelector(".copy").addEventListener("click", async ()=>{
+    await navigator.clipboard.writeText(joke_container.innerText);
 })
-*/
+
