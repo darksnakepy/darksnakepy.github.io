@@ -10,8 +10,8 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Administration">
                     <items>
-                  <MenuItem mnemonicParsing="false" text="Patient's Data" />
-                        <MenuItem mnemonicParsing="false" text="Registration form" />
+                  <MenuItem mnemonicParsing="false"  text="Patient's Data" />
+                        <MenuItem mnemonicParsing="false" onAction="#register" text="Registration form" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Info">

@@ -26,8 +26,8 @@ public class DentistController {
         Stage stage = new Stage();
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
-        stage.setWidth(600);
-        stage.setHeight(400);
+        stage.setWidth(728);
+        stage.setHeight(520);
         stage.setTitle("Register");
         stage.setScene(scene);
         stage.show();
