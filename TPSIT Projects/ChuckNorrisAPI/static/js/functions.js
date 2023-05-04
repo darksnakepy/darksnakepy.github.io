@@ -6,7 +6,6 @@ let joke = document.querySelector(".joke")
 let joke_container = document.querySelector(".joke-container")
 
 btn?.addEventListener("click", async (e)=>{
-    console.log(genre.value)
     e.preventDefault()
     let genre = document.querySelector(".category-selector").value
     let url = `https://api.chucknorris.io/jokes/random?category=${genre.toLowerCase()}`
