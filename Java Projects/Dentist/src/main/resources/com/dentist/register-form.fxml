@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="registrazionePanel" prefHeight="502.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.RegisterController">
+    <children>
+      <ImageView fitHeight="570.0" fitWidth="754.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../java/com/dentist/v1016-a-07.jpg" />
+         </image></ImageView>
+        <Label alignment="CENTER" layoutX="39.0" layoutY="24.0" text="Register Form">
+            <font>
+                <Font name="Tahoma Bold" size="36.0" />
+            </font></Label>
+        <Label layoutX="142.0" layoutY="290.0" text="Codice fiscale" textFill="WHITE">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></Label>
+        <Label layoutX="319.0" layoutY="101.0" text="Insert your last name">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font></Label>
+        <Label layoutX="132.0" layoutY="377.0" text="Problematica" textFill="WHITE">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></Label>
+        <TextArea fx:id="patologiaT" layoutX="44.0" layoutY="290.0" prefHeight="137.0" prefWidth="328.0" promptText="Write here">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></TextArea>
+        <Label layoutX="44.0" layoutY="101.0" text="Insert your name">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="cognomeT" layoutX="44.0" layoutY="130.0" prefHeight="39.0" prefWidth="177.0" promptText="Name" styleClass="root">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </TextField>
+      <TextField fx:id="cognomeT1" layoutX="319.0" layoutY="130.0" prefHeight="39.0" prefWidth="177.0" promptText="Surname" styleClass="root">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="44.0" layoutY="184.0" text="Insert your age">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cognomeT2" layoutX="44.0" layoutY="213.0" prefHeight="39.0" prefWidth="177.0" promptText="Age" styleClass="root">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="319.0" layoutY="184.0" prefHeight="20.0" prefWidth="127.0" text="Insert your tax id">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cognomeT21" layoutX="319.0" layoutY="213.0" prefHeight="39.0" prefWidth="177.0" promptText="Tax ID" styleClass="root">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="45.0" layoutY="262.0" text="Tell us what's the problem">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+        <Button layoutX="246.0" layoutY="442.0" mnemonicParsing="false" style="-fx-border-color: black;" styleClass="root" text="Exit">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></Button>
+        <Button layoutX="159.0" layoutY="442.0" mnemonicParsing="false" style="-fx-border-color: black;" styleClass="root" text="Reset">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></Button>
+        <Button layoutX="46.0" layoutY="443.0" mnemonicParsing="false" style="-fx-border-color: black;" styleClass="root" text="Save data">
+            <font>
+                <Font name="Bell MT Bold" size="16.0" />
+            </font></Button>
+    </children>
+</AnchorPane>
