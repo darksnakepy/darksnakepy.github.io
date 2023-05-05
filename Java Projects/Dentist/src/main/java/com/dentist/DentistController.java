@@ -1,5 +1,6 @@
 package com.dentist;
 
+import com.dentist.sqllite.SQL_methods;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,15 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class DentistController {
-
-    @FXML
-    ImageView imageviewer;
-    Image img = new Image("file:dentist.png");
-
-    public void displayImage(){
-        imageviewer.setImage(img);
-    }
-
 
     @FXML
     protected void register() throws IOException { // opens the register form

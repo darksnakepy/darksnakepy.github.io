@@ -26,7 +26,7 @@
    <center>
       <ImageView fx:id="imageviewer" fitHeight="243.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../java/com/dentist/dentist.png" />
+            <Image url="@dentist.png" />
          </image>
       </ImageView>
    </center>

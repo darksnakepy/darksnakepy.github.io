@@ -6,12 +6,27 @@ import java.util.ArrayList;
 
 public class SQL_methods {
     static Connection connection = null;
-    static String db_path = "jdbc:sqlite:C:\\Users\\darksnake\\Desktop\\school\\darksnakepy.github.io\\Java Projects\\Dentist\\src\\main\\java\\com.dentist\\sqllite\\users.db";
+    static String db_path = "jdbc:sqlite:C:\\db\\dentist.db";
 
-    public static boolean connectionHandle() {
+    public static void createNewDatabase() {
+
+
+        try (Connection conn = DriverManager.getConnection(db_path)) {
+            if (conn != null) {
+                DatabaseMetaData meta = conn.getMetaData();
+                System.out.println("The driver name is " + meta.getDriverName());
+                System.out.println("A new database has been created.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean connectionHandle() {
         try {
             connection = DriverManager.getConnection(db_path);
-            createTable();
+            //createTable();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -19,24 +34,28 @@ public class SQL_methods {
         }
     }
 
-    public static void createTable() {
+    public static boolean createTable() {
 
         // preparing SQL statement to create a new table
         String table = "CREATE TABLE IF NOT EXISTS dentist (\n"
                 + "	id integer PRIMARY KEY,\n"
                 + "	name text NOT NULL,\n"
                 + " surname text NOT NULL,\n"
-                + "	age int NOT NULL,\n"
-                + "	taxID text NOT NULL, \n"
-                + "	issue text NOT NULL, \n"
+                + "	age integer,\n"
+                + "	taxid text \n"
+                + "	issue text \n"
                 + ");";
 
         try {
             Statement statement = connection.createStatement();
             statement.execute(table);
+            return true;
         } catch (SQLException e) {
+            System.out.println(e);
+            return false;
         }
     }
+
 
     public boolean registerPatient(ArrayList<Patient> patientsList) {
         String insert_data = "INSERT INTO dentist(name,surname, age, taxId, issue) VALUES(?,?,?,?,?)";

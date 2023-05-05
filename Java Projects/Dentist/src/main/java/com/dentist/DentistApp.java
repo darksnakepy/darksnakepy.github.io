@@ -1,15 +1,15 @@
 package com.dentist;
 
+import com.dentist.sqllite.SQL_methods;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class DentistApp extends Application {
     @Override
@@ -26,6 +26,9 @@ public class DentistApp extends Application {
     }
 
     public static void main(String[] args) {
+        SQL_methods sql = new SQL_methods();
+        sql.connectionHandle();
         launch();
-    }
+    };
+
 }
