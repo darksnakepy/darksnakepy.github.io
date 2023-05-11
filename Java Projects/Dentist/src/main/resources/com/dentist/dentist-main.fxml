@@ -4,13 +4,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="pannelloPrincipale" fx:id="sfondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #041014;" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
+<BorderPane id="pannelloPrincipale" fx:id="sfondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Administration">
                     <items>
-                  <MenuItem mnemonicParsing="false"  text="Patient's Data" />
+                  <MenuItem mnemonicParsing="false" text="Patient's Data" />
                         <MenuItem mnemonicParsing="false" onAction="#register" text="Registration form" />
                     </items>
                 </Menu>
@@ -24,7 +24,7 @@
         </MenuBar>
     </top>
    <center>
-      <ImageView fx:id="imageviewer" fitHeight="243.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="imageviewer" fitHeight="72.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@dentist.png" />
          </image>

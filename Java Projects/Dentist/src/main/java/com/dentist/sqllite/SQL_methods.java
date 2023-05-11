@@ -23,14 +23,12 @@ public class SQL_methods {
         }
     }
 
-    public boolean connectionHandle() {
+    public void connectionHandle() {
         try {
             connection = DriverManager.getConnection(db_path);
             //createTable();
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 
@@ -90,10 +88,22 @@ public class SQL_methods {
                 String issue = rs.getString("issue");
                 sb.append("Patient ID = ").append(id).append(", Name = ").append(name).append(", Surname = ").append(surname).append(", Age = ").append(age).append(", Tax ID = ").append(taxId).append(", Issue = ").append(issue).append("\n");
             }
+            System.out.println(sb);
             return true;
         } catch (SQLException e) {
             return false;
         }
     }
 
+    public void deleteData(){
+        String deleteQuery = "DELETE FROM dentist WHERE type = 'table'";
+        try {
+            PreparedStatement statement = connection.prepareStatement(deleteQuery);
+            statement.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
 }

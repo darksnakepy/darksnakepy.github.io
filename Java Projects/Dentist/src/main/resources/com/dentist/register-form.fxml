@@ -71,17 +71,22 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-        <Button layoutX="248.0" layoutY="444.0" mnemonicParsing="false" styleClass="root" text="Exit">
+        <Button fx:id="exit" layoutX="248.0" layoutY="444.0" mnemonicParsing="false" onAction="#exitHandle" styleClass="root" text="Exit">
             <font>
                 <Font name="Bell MT Bold" size="16.0" />
             </font></Button>
-        <Button layoutX="159.0" layoutY="444.0" mnemonicParsing="false" styleClass="root" text="Reset">
+        <Button fx:id="resetButton" layoutX="159.0" layoutY="444.0" mnemonicParsing="false" onAction="#resetData" styleClass="root" text="Reset">
             <font>
                 <Font name="Bell MT Bold" size="16.0" />
             </font></Button>
-        <Button layoutX="46.0" layoutY="444.0" mnemonicParsing="false" styleClass="root" text="Save data">
+        <Button fx:id="saveData" layoutX="46.0" layoutY="444.0" mnemonicParsing="false" onAction="#insertData" styleClass="root" text="Save data">
             <font>
                 <Font name="Bell MT Bold" size="16.0" />
             </font></Button>
+      <Label fx:id="status" layoutX="486.0" layoutY="450.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
