@@ -28,7 +28,6 @@ public class DentistApp extends Application {
     public static void main(String[] args) throws SQLException {
         SQL_methods sql = new SQL_methods();
         sql.connectionHandle();
-        sql.getData();
         launch();
     };
 

@@ -73,7 +73,7 @@ public class SQL_methods {
         }
     }
 
-    public boolean getData() throws SQLException { // get all data from all patients
+    public StringBuilder getData() throws SQLException { // get all data from all patients
         String get_data = "SELECT * FROM dentist";
         try {
             PreparedStatement statement = connection.prepareStatement(get_data);
@@ -89,9 +89,10 @@ public class SQL_methods {
                 sb.append("Patient ID = ").append(id).append(", Name = ").append(name).append(", Surname = ").append(surname).append(", Age = ").append(age).append(", Tax ID = ").append(taxId).append(", Issue = ").append(issue).append("\n");
             }
             System.out.println(sb);
-            return true;
+            return sb;
+
         } catch (SQLException e) {
-            return false;
+            return null;
         }
     }
 

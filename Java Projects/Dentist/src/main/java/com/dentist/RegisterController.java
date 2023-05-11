@@ -6,10 +6,12 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class RegisterController {
     SQL_methods sql = new SQL_methods();
+
     @FXML
     private TextField name;
     @FXML
@@ -37,6 +39,28 @@ public class RegisterController {
         }
     }
 
+    public void insertDataTxt(){
+        SaveFile savefile;
+        {
+            try {
+                savefile = new SaveFile("patients.txt");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        if(checkFields()) {
+            patients.add(new Patient(name.getText(), surname.getText(), Integer.parseInt(age.getText()), taxid.getText(), issue.getText()));
+            try{
+                savefile.register(patients);
+                status.setText("Registered over txt file!");
+            }catch (IOException e){
+                System.out.println(e);
+            }
+        }
+        else status.setText("Fill all the fields!");
+    }
+
     public void resetData(){
         name.setText("");
         surname.setText("");
@@ -46,10 +70,7 @@ public class RegisterController {
     }
 
     public boolean checkFields(){
-        if(name.getText().isEmpty() || surname.getText().isEmpty() || age.getText().isEmpty() || taxid.getText().isEmpty() || issue.getText().isEmpty()){
-            return false;
-        }
-        else return true;
+        return !name.getText().isEmpty() && !surname.getText().isEmpty() && !age.getText().isEmpty() && !taxid.getText().isEmpty() && !issue.getText().isEmpty();
     }
 
     public void exitHandle(){
