@@ -1,20 +1,19 @@
 package com.dentist;
 
+import javafx.scene.control.Label;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class SaveFile {
-    private FileWriter fileWriter;
-    private BufferedWriter bufferedWriter;
-    private String filename;
+    private final BufferedWriter bufferedWriter;
 
     public SaveFile(String filename) throws IOException {
-        this.filename = filename;
-        fileWriter = new FileWriter(filename, true);
+        FileWriter fileWriter = new FileWriter(filename, true);
         bufferedWriter = new BufferedWriter(fileWriter);
     }
 
-    public boolean register(ArrayList<Patient> patients) throws IOException {
+    public void register(ArrayList<Patient> patients) throws IOException {
         try {
             for (Patient patient : patients) {
                 StringBuilder sb = new StringBuilder();
@@ -22,11 +21,30 @@ public class SaveFile {
                 bufferedWriter.write(sb.toString());
             }
             bufferedWriter.close();
-            return true;
         } catch (IOException e) {
             System.out.println(e);
-            return false;
         }
+    }
+
+    public String[] viewData(Label label) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("patients.txt"));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = reader.readLine();
+        String[] patientsNames = new String[0];
+
+        if (line == null) {
+            System.out.println("No patients");
+        } else {
+            while (line != null) {
+                stringBuilder.append(line).append("\n");
+                line = reader.readLine();
+
+            }
+        }
+        patientsNames = stringBuilder.toString().split(",");
+        reader.close();
+        label.setText(String.valueOf(patientsNames));
+        return patientsNames;
     }
 
 }

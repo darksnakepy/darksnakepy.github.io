@@ -34,7 +34,7 @@ public class RegisterController {
             status.setText("Registered!");
         }
         else{
-            System.out.println("Errore");
+            System.out.println("Error");
             status.setText("You must fill all the fields");
         }
     }
@@ -80,8 +80,10 @@ public class RegisterController {
         alert.setContentText("Do you want to save data before leaving?");
 
         if (alert.showAndWait().orElse(null) == ButtonType.OK) {
-            insertData();
-            status.setText("Registered!");
+            if(checkFields()){
+                insertData();
+                status.setText("Registered!");
+            }else status.setText("Fill all fields!");
         }
     }
 

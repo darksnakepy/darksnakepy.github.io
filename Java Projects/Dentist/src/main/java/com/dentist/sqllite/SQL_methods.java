@@ -73,12 +73,14 @@ public class SQL_methods {
         }
     }
 
-    public StringBuilder getData() throws SQLException { // get all data from all patients
+    public String[] getData() throws SQLException { // get all data from all patients
         String get_data = "SELECT * FROM dentist";
+        StringBuilder sb = new StringBuilder();
+        String[] patientsNames = new String[0];
         try {
             PreparedStatement statement = connection.prepareStatement(get_data);
             ResultSet rs = statement.executeQuery();
-            StringBuilder sb = new StringBuilder();
+
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -87,13 +89,17 @@ public class SQL_methods {
                 String taxId = rs.getString("taxId");
                 String issue = rs.getString("issue");
                 sb.append("Patient ID = ").append(id).append(", Name = ").append(name).append(", Surname = ").append(surname).append(", Age = ").append(age).append(", Tax ID = ").append(taxId).append(", Issue = ").append(issue).append("\n");
+                // works
             }
-            System.out.println(sb);
-            return sb;
+            patientsNames = sb.toString().split(",");
+            for (String patient : patientsNames) {
+                System.out.println(patient);
+            }
 
         } catch (SQLException e) {
-            return null;
+            System.out.println(e);
         }
+        return patientsNames;
     }
 
     public void deleteData(){
