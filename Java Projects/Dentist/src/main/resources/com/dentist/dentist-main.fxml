@@ -25,4 +25,7 @@
    <center>
       <Label fx:id="viewPatients" prefHeight="251.0" prefWidth="284.0" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

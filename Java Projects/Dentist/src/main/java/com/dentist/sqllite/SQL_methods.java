@@ -92,9 +92,6 @@ public class SQL_methods {
                 // works
             }
             patientsNames = sb.toString().split(",");
-            for (String patient : patientsNames) {
-                System.out.println(patient);
-            }
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -102,15 +99,39 @@ public class SQL_methods {
         return patientsNames;
     }
 
-    public void deleteData(){
-        String deleteQuery = "DELETE FROM dentist WHERE type = 'table'";
+
+
+    public void deleteAllData(){
+        String deleteQuery = "DELETE FROM dentist";
         try {
             PreparedStatement statement = connection.prepareStatement(deleteQuery);
-            statement.executeQuery();
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e);
         }
 
+    }
+
+    public void callPatient() throws SQLException {
+        String deleteQuery = "DELETE FROM dentist WHERE ROWID = (SELECT MIN(ROWID) FROM dentist);";
+        String select = "SELECT * FROM dentist where ROWID = (SELECT MIN(ROWID) FROM dentist)";
+
+        Statement selectStatement = connection.createStatement();
+        ResultSet resultSet = selectStatement.executeQuery(select);
+        try {
+            // Delete the first row
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                PreparedStatement deleteStatement = connection.prepareStatement(deleteQuery);
+                int rowsDeleted = deleteStatement.executeUpdate();
+                System.out.println(rowsDeleted + " row deleted successfully.");
+            } else {
+                System.out.println("No rows found.");
+            }
+
+        }catch(SQLException e){
+            System.out.println("error"+ e);
+    }
     }
 }

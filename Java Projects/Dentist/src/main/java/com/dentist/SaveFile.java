@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SaveFile {
     private final BufferedWriter bufferedWriter;
@@ -26,7 +27,7 @@ public class SaveFile {
         }
     }
 
-    public String[] viewData(Label label) throws IOException {
+    public String[] viewData() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("patients.txt"));
         StringBuilder stringBuilder = new StringBuilder();
         String line = reader.readLine();
@@ -43,7 +44,6 @@ public class SaveFile {
         }
         patientsNames = stringBuilder.toString().split(",");
         reader.close();
-        label.setText(String.valueOf(patientsNames));
         return patientsNames;
     }
 

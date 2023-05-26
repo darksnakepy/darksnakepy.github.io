@@ -14,30 +14,35 @@ import java.sql.SQLException;
 
 
 public class DentistApp extends Application {
-    @FXML
-    Label viewPatients;
+    final int WIDTH = 600;
+    final int HEIGHT = 400;
+
     @Override
     public void start(Stage stage) throws IOException {
-
         SaveFile saveFile = new SaveFile("patients.txt");
         FXMLLoader fxmlLoader = new FXMLLoader(DentistApp.class.getResource("dentist-main.fxml"));
         stage.setResizable(false);
-        stage.setWidth(600);
-        stage.setHeight(400);
+        stage.setWidth(WIDTH);
+        stage.setHeight(HEIGHT);
 
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Dentist");
         stage.setScene(scene);
         stage.show();
-        saveFile.viewData();
+        String data[] = saveFile.viewData();
+        for (String patient : data) {
+            System.out.println(patient); // print to debug
+        }
+
 
     }
 
     public static void main(String[] args) throws SQLException {
         SQL_methods sql = new SQL_methods();
         sql.connectionHandle();
-        sql.getData();
+        sql.callPatient();
         launch();
     };
-
+    // sql.getData();
+    //sql.deleteData();
 }
