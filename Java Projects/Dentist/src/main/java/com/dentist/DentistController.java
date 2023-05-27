@@ -22,6 +22,15 @@ public class DentistController {
     public DentistController() throws SQLException, IOException {
     }
 
+    SaveFile savefile;
+    {
+        try {
+            savefile = new SaveFile("patients.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML
     protected void register() throws IOException { // opens the register form
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register-form.fxml"));
@@ -39,22 +48,18 @@ public class DentistController {
         try {
             ObservableList patientsL = FXCollections.observableArrayList();
 
-            SaveFile savefile;
-            {
-                try {
-                    savefile = new SaveFile("patients.txt");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
             String[] patients = savefile.viewData();
+            for (String patient : patients) {
+                System.out.println(patient);
+            }
             //String[] patientInfoArray = patients.toString().split(";");
 
         if(patients != null) {
             for (String patient : patients) {
                 patientsL.add(patient);
+                System.out.println(patient);
             }
+
             patientList.setItems(patientsL);
         }else{
             System.out.println("no patients");
@@ -77,8 +82,9 @@ public class DentistController {
 
     }
 
-    public void callPatient(){
-
+    public void callPatient() throws IOException {
+        savefile.callPatient();
+        updateList();
     }
 
     public void callPatientSQL() throws SQLException {

@@ -7,8 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -38,6 +36,7 @@ public class DentistApp extends Application {
     public static void main(String[] args) throws SQLException {
         SQL_methods sql = new SQL_methods();
         sql.connectionHandle();
+        sql.getData();
         launch();
     };
     // sql.getData();

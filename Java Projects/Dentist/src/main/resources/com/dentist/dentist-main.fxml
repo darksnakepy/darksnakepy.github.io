@@ -16,7 +16,7 @@
                 <Menu mnemonicParsing="false" text="Info">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#callPatient" text="Chiama Paziente" />
-                        <MenuItem mnemonicParsing="false" onAction="#updateListSQL" text="Aggiorna lista" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateList" text="Aggiorna lista" />
                     </items>
                 </Menu>
             </menus>

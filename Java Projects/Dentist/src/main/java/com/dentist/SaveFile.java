@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SaveFile {
     private final BufferedWriter bufferedWriter;
@@ -31,23 +32,45 @@ public class SaveFile {
         BufferedReader reader = new BufferedReader(new FileReader("patients.txt"));
         StringBuilder stringBuilder = new StringBuilder();
         String line = reader.readLine();
-        String[] patientsNames;
-
-        //ArrayList<Patient> patientsList = new ArrayList<>();
+        String[] patientsNames = new String[0];
 
         if (line == null) {
             System.out.println("No patients");
         } else {
             while (line != null) {
+                stringBuilder.append(line).append("\n");
                 line = reader.readLine();
+
             }
         }
         patientsNames = stringBuilder.toString().split(",");
         reader.close();
-
         return patientsNames;
     }
 
 
+    public void callPatient() throws IOException {
+        ArrayList<String> lines = new ArrayList<>();
 
+        // Read all lines from the file
+        try (BufferedReader reader = new BufferedReader(new FileReader("patients.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+
+        // Overwrite the first line with an empty string
+        if (!lines.isEmpty()) {
+            lines.set(0, "");
+        }
+
+        // Write the modified lines back to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("patients.txt"))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+    }
 }
