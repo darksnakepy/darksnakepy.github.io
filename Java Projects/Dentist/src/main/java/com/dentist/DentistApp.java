@@ -40,5 +40,6 @@ public class DentistApp extends Application {
         launch();
     };
     // sql.getData();
-    //sql.deleteData();
+
+
 }

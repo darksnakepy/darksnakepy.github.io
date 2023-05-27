@@ -19,7 +19,7 @@ public class SaveFile {
         try {
             for (Patient patient : patients) {
                 StringBuilder sb = new StringBuilder();
-                sb.append("Name = ").append(patient.getName()).append(", Surname = ").append(patient.getSurname()).append(", Age = ").append(patient.getAge()).append(", Tax ID = ").append(patient.getTaxId()).append(", Issue = ").append(patient.getIssue()).append("\n");
+                sb.append("Name = ").append(patient.getName()).append(",Surname = ").append(patient.getSurname()).append(",Age = ").append(patient.getAge()).append(",Tax ID = ").append(patient.getTaxId()).append(",Issue = ").append(patient.getIssue());
                 bufferedWriter.write(sb.toString());
             }
             bufferedWriter.close();
