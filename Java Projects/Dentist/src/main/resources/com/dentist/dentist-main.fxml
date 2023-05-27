@@ -3,29 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="pannelloPrincipale" fx:id="sfondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
+<AnchorPane fx:id="pannelloPrincipale" prefHeight="384.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dentist.DentistController">
+    <children>
+        <MenuBar prefHeight="25.0" prefWidth="571.0" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Administration">
                     <items>
-                  <MenuItem mnemonicParsing="false" text="Patient's Data" />
+                        <MenuItem mnemonicParsing="false" text="Patient's Data" />
                         <MenuItem mnemonicParsing="false" onAction="#register" text="Registration form" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Info">
                     <items>
-                        <MenuItem fx:id="aboutButton" mnemonicParsing="false" text="About us" />
-                  <MenuItem mnemonicParsing="false" text="Dottore" />
+                        <MenuItem mnemonicParsing="false" onAction="#callPatient" text="Chiama Paziente" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateListSQL" text="Aggiorna lista" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-    </top>
-   <center>
-      <Label fx:id="viewPatients" prefHeight="251.0" prefWidth="284.0" BorderPane.alignment="CENTER" />
-   </center>
-   <bottom>
-      <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+      <ListView fx:id="patientList" layoutX="20.0" layoutY="44.0" prefHeight="293.0" prefWidth="550.0" />
+    </children>
+
+</AnchorPane>

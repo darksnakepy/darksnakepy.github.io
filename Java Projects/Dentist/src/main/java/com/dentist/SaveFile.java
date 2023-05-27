@@ -31,20 +31,23 @@ public class SaveFile {
         BufferedReader reader = new BufferedReader(new FileReader("patients.txt"));
         StringBuilder stringBuilder = new StringBuilder();
         String line = reader.readLine();
-        String[] patientsNames = new String[0];
+        String[] patientsNames;
+
+        //ArrayList<Patient> patientsList = new ArrayList<>();
 
         if (line == null) {
             System.out.println("No patients");
         } else {
             while (line != null) {
-                stringBuilder.append(line).append("\n");
                 line = reader.readLine();
-
             }
         }
         patientsNames = stringBuilder.toString().split(",");
         reader.close();
+
         return patientsNames;
     }
+
+
 
 }

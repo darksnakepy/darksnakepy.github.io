@@ -33,14 +33,11 @@ public class DentistApp extends Application {
         for (String patient : data) {
             System.out.println(patient); // print to debug
         }
-
-
     }
 
     public static void main(String[] args) throws SQLException {
         SQL_methods sql = new SQL_methods();
         sql.connectionHandle();
-        sql.callPatient();
         launch();
     };
     // sql.getData();
