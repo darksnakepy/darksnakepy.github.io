@@ -1,6 +1,6 @@
 import { useEffect, useState, ChangeEvent, useRef } from 'react';
 import 'leaflet/dist/leaflet.css';
-import Map from './Map/Map';
+import Map from '../Map/Map';
 
 const MainPage = () =>{
 
