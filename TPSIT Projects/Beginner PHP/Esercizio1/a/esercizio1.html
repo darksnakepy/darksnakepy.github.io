@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="esercizio1.php" method="post">
+        <table>
+            <tr>
+                <td>LOCALITA'</td>
+                <td><input type="text" name="localita"></td>
+            </tr>
+            <tr>
+                <td>DATA</td>
+                <td><input type="text" name="data"></td>
+            </tr>
+            <tr>
+                <td>ORA</td>
+                <td><input type="text" name="ora"></td>
+            </tr>
+            <tr>
+                <td>TIPO RILEVAZIONE</td>
+                <td>
+                    <input checked type="radio" id="OFC" value="OFC" name="rilevazione"><label for="OFC">OFC</label>
+                    <input type="radio" id="AMB" value="AMB" name="rilevazione"><label for="AMB">AMB</label>
+                    <input type="radio" id="DRA" value="DRA" name="rilevazione"><label for="DRA">DRA</label>
+                </td>
+            </tr>
+            <tr>
+                <td>UMIDITA</td>
+                <td>
+                    <select name="umidita">
+                        <option value="assoluta">ASSOLUTA</option>
+                        <option value="relativa">RELATIVA</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>CLIMA ATTUALE</td>
+                <td>
+                    <select name="clima">
+                        <option>PIOGGIA</option>
+                        <option>SERENO</option>
+                        <option>VENTOSO</option>
+                        <option>UMIDO</option>
+                        <option>FOSCHIA</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>ALTITUDINE</td>
+                <td><input type="number" name="altitudine"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="INVIA rilevazione"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+
+<!--<label for="location">LOCALITA</label>
+<input id="location" type="text" name="location">
+<label for="data">DATA</label>
+<input id="data" type="text" name="data">
+<label for="ora">ORA</label>
+<input id="ora" type="text" name="ora">
+<input checked type="radio" id="OFC" value="OFC" name="rilevazione"><label for="OFC">OFC</label>
+<input type="radio" id="AMB" value="AMB" name="rilevazione"><label for="AMB">AMB</label>
+<input type="radio" id="DRA" value="DRA" name="rilevazione"><label for="DRA">DRA</label>
+<select name="umidita">
+    <option value="assoluta">ASSOLUTA</option>
+    <option value="relativa">RELATIVA</option>
+</select>
+<select name="clima">
+    <option value="pioggia">PIOGGIA</option>
+    <option value="sereno">SERENO</option>
+    <option value="ventoso">VENTOSO</option>
+    <option value="foschia">FOSCHIA</option>
+</select>-->

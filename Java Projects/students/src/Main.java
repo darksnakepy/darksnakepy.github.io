@@ -30,7 +30,7 @@ class Main{
                 case 2 -> {
                     System.out.println("List of students in the class:");
                     for (Student student : classList) {
-                        System.out.println("First Name: " + student.firstName() + ", Last Name: " + student.lastName() + ", Age: " + student.age());
+                                System.out.println("First Name: " + student.firstName() + ", Last Name: " + student.lastName() + ", Age: " + student.age());
                     }
                 }
                 case 3 -> {
