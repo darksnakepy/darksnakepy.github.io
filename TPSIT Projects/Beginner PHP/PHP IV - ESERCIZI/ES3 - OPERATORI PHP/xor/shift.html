@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form method="post" action="shift.php">
+    <label for="number1">Insert a number:</label>
+    <input type="number" name="number1" id="number1" required>
+    <br>
+    <label for="number2">Insert another number:</label>
+    <input type="number" name="number2" id="number2" required>
+    <br>
+    <input type="radio" name="operation" value="and" id="and" required>
+    <label for="and">AND</label>    <br>
+
+    <input type="radio" name="operation" value="or" id="or" required>
+    <label for="or">OR</label>    <br>
+
+    <input type="radio" name="operation" value="xor" id="xor" required>
+    <label for="xor">XOR</label>    <br>
+    <br>
+    <input type="submit" name="submit" value="<-- Calculate -->">
+  </form>
+</body>
+</html>

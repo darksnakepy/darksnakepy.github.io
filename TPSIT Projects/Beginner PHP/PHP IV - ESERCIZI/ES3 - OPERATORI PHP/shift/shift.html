@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form method="post" action="operazioni.php">
+    <label for="number">Insert a number:</label>
+    <input type="number" name="number" id="number" required>
+    <br>
+    <br>
+    <input type="radio" name="operation" value="shift_right" id="shift_right" required>
+    <label for="shift_right">Shift right</label>    <br>
+
+    <input type="radio" name="operation" value="shift_left" id="shift_left" required>
+    <label for="shift_left">Shift Sinistro</label>    <br>
+
+    <input type="radio" name="operation" value="bit_not" id="bit_not" required>
+    <label for="bit_not">NOT</label>    <br>
+    <br>
+    <input type="submit" name="submit" value="<-- Calculate -->">
+  </form>
+</body>
+</html>
