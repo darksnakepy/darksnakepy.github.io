@@ -1,4 +1,4 @@
-CREATE DATABASE film;
+CREATE DATABASE movies;
 
 CREATE TABLE GENERE (
     nome VARCHAR(50),
@@ -8,7 +8,8 @@ CREATE TABLE GENERE (
 CREATE TABLE FILM (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titolo VARCHAR(50),
-    sinossi VARCHAR(50)
+    descrizione VARCHAR(50),
+    annoRilascio int(4)
 );
 
 CREATE TABLE PERSONA (
@@ -17,7 +18,7 @@ CREATE TABLE PERSONA (
     nome VARCHAR(50),
     secondoNome VARCHAR(50) DEFAULT NULL,
     cognome VARCHAR(50),
-    dataN DATE
+    dataNascita DATE
 );
 
 CREATE TABLE INTERPRETA (
@@ -26,6 +27,14 @@ CREATE TABLE INTERPRETA (
     PRIMARY KEY (attore, film),
     FOREIGN KEY (film) REFERENCES FILM(id),
     FOREIGN KEY (attore) REFERENCES PERSONA(id)
+);
+
+CREATE TABLE DIRIGE (
+    regista INT,
+    film INT,
+    PRIMARY KEY (regista, film),
+    FOREIGN KEY (film), REFERENCES FILM(id),
+    REFERENCES (regista), REFERENCES PERSONA(id)
 );
 
 CREATE TABLE REGISTA (
@@ -43,3 +52,4 @@ CREATE TABLE GENERI (
     FOREIGN KEY (film) REFERENCES FILM(id),
     FOREIGN KEY (genere) REFERENCES GENERE(id)
 );
+
