@@ -5,22 +5,36 @@
         if($_SERVER["PATH_INFO"] == "/movies"){
             http_response_code(200);
             header("Content-Type: application/json");
-            $movieTitle = $_GET["title"];
-            
+            $result = getAllMovies();            
             echo json_encode([
                 "status" => 200,
                 "message" => "",
-                "payload" => $
-            ])
+                "payload" => $result
+            ]);
         }
 
-    }else{
-        http_response_code(405)
-        header("Content-Type: application/json");
-        echo json_encode([
-            "status" => 405,
-            "message" => "Method not allowed",
-            "payload" => []
-        ]);
+        else if($_SERVER["PATH_INFO"] == "/actors"){
+            http_response_code(200);
+            header("Content-Type: application/json");
+            $result = getActor("Christian Bale");            
+            echo json_encode([
+                "status" => 200,
+                "message" => "",
+                "payload" => $result
+            ]);
+        }
+
+        else if($_SERVER["PATH_INFO"] == "/getmovie"){
+            http_response_code(200);
+            header("Content-Type: application/json");
+            $result = getAMovie("The Dark Knight"); 
+            echo json_encode([
+                "status" => 200,
+                "message" => "",
+                "payload" => $result
+            ]);
+        }
+
     }
+        
 ?>
