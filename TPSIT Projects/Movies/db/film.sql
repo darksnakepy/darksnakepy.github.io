@@ -1,5 +1,7 @@
 CREATE DATABASE movies;
 
+use movies;
+
 CREATE TABLE GENERE (
     nome VARCHAR(50),
     id INT AUTO_INCREMENT PRIMARY KEY
@@ -33,8 +35,8 @@ CREATE TABLE DIRIGE (
     regista INT,
     film INT,
     PRIMARY KEY (regista, film),
-    FOREIGN KEY (film), REFERENCES FILM(id),
-    REFERENCES (regista), REFERENCES PERSONA(id)
+    FOREIGN KEY (film) REFERENCES FILM(id),
+    FOREIGN KEY (regista) REFERENCES PERSONA(id)
 );
 
 CREATE TABLE REGISTA (
@@ -53,3 +55,19 @@ CREATE TABLE GENERI (
     FOREIGN KEY (genere) REFERENCES GENERE(id)
 );
 
+CREATE TABLE UTENTE (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(25),
+    last_name VARCHAR(25),
+    email VARCHAR(25),
+    password VARCHAR(25),
+    registration_date DATE
+);
+
+CREATE TABLE FILM_VISTI (
+    user INT,
+    film INT,
+    PRIMARY KEY (user, film),
+    FOREIGN KEY (film) REFERENCES FILM(id),
+    FOREIGN KEY (user) REFERENCES UTENTE(id)
+);
