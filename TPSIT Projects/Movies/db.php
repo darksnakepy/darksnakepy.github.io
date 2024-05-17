@@ -8,17 +8,17 @@
                 FILM.titolo, FILM.annoRilascio, CONCAT(PERSONA.nome, ' ', PERSONA.cognome) as director, GENERE.nome as genre, CONCAT(PERSONA_ATTORE.nome, ' ', PERSONA_ATTORE.cognome) as actor, FILM.descrizione
             FROM 
                 FILM
-            INNER JOIN 
+            JOIN 
                 REGISTA ON FILM.id = REGISTA.film
-            INNER JOIN 
+            JOIN 
                 PERSONA ON REGISTA.regista = PERSONA.id
-            INNER JOIN 
+            JOIN 
                 GENERI ON FILM.id = GENERI.film
-            INNER JOIN 
+            JOIN 
                 GENERE ON GENERI.genere = GENERE.id
-            INNER JOIN 
+            JOIN 
                 INTERPRETA ON FILM.id = INTERPRETA.film
-            INNER JOIN 
+            JOIN 
                 PERSONA AS PERSONA_ATTORE ON INTERPRETA.attore = PERSONA_ATTORE.id
         ";
 
@@ -43,17 +43,17 @@
                 FILM.titolo, FILM.annoRilascio, CONCAT(PERSONA.nome, ' ', PERSONA.cognome) as director, GENERE.nome as genre, CONCAT(PERSONA_ATTORE.nome, ' ', PERSONA_ATTORE.cognome) as actor, FILM.descrizione
             FROM 
                 FILM
-            INNER JOIN 
+            JOIN 
                 REGISTA ON FILM.id = REGISTA.film
-            INNER JOIN 
+            JOIN 
                 PERSONA ON REGISTA.regista = PERSONA.id
-            INNER JOIN 
+            JOIN 
                 GENERI ON FILM.id = GENERI.film
-            INNER JOIN 
+            JOIN 
                 GENERE ON GENERI.genere = GENERE.id
-            INNER JOIN 
+            JOIN 
                 INTERPRETA ON FILM.id = INTERPRETA.film
-            INNER JOIN 
+            JOIN 
                 PERSONA AS PERSONA_ATTORE ON INTERPRETA.attore = PERSONA_ATTORE.id 
             WHERE FILM.titolo = '$title'
         ";
@@ -79,9 +79,9 @@
                 PERSONA.categoria AS category
             FROM 
                 PERSONA
-            INNER JOIN 
+            JOIN 
                 INTERPRETA ON PERSONA.id = INTERPRETA.attore
-            INNER JOIN 
+            JOIN 
                 FILM ON INTERPRETA.film = FILM.id
             WHERE 
                 CONCAT(PERSONA.nome, ' ', PERSONA.cognome) = '$name'
@@ -96,6 +96,30 @@
             }
         }
         return $actor;
+    }
+
+    function getGenre($genre){
+        $query = "
+            SELECT GENERE.nome as genre, FILM.titolo as title, FILM.descrizione as description
+            FROM
+                FILM
+            JOIN 
+                GENERI as g ON FILM.id = g.film 
+            JOIN 
+                GENERE as g ON g.genere = GENERE.id 
+            WHERE 
+                GENERE.nome = '$genre'        
+        ";
+
+        $result = $connection->query($query);
+        $genres = [];
+    
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $genres[] = $row;
+            }
+        }
+        return $genres;
     }
 
     $localhost = "127.0.0.1";

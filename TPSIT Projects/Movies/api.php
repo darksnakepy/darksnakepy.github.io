@@ -35,6 +35,18 @@
             ]);
         }
 
+        else if($_SERVER["PATH_INFO"] == "/getgenres"){
+            http_response_code(200); 
+            header("Content-Type: application/json");
+            $result = getGenre("Action"); 
+            echo json_encode([
+                "status" => 200,
+                "message" => "",
+                "payload" => $result
+            ]);
+        }
+
+
     }
         
 ?>
