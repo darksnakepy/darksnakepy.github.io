@@ -1,4 +1,6 @@
 <?php
+    require_once("db.php");
+
     function cosin_similarity($a, $b){
         $modulo_a = 0;
         $modulo_b = 0;
@@ -20,15 +22,5 @@
         
         $dist = $num / $den;
         return $dist;
-    }
-
-    function build_matrix($movies, $users){
-        $matrix = null;
-        foreach($movies as $movie){
-            foreach($users as $user){
-               $matrix[$user][$movie] = 0;
-            }
-        }
-        return $matrix;
     }
 ?>

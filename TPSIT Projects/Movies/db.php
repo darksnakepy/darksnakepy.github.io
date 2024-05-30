@@ -122,6 +122,19 @@
         return $genres;
     }
 
+    function getMoviesMatrix(){
+        $query = "SELECT id, titolo from FILM";
+        $result = $connection->query($query);
+        $movies = [];
+    
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $movies[] = $row;
+            }
+        }
+        return $movies;
+    }
+
     $localhost = "127.0.0.1";
     $connection = mysqli_connect($localhost, "root", "", "movies");
 

@@ -16,7 +16,8 @@
         else if($_SERVER["PATH_INFO"] == "/actors"){
             http_response_code(200);
             header("Content-Type: application/json");
-            $result = getActor("Christian Bale");            
+            $actor = $_GET["actor"];    
+            $result = getActor($actor);            
             echo json_encode([
                 "status" => 200,
                 "message" => "",
@@ -25,9 +26,10 @@
         }
 
         else if($_SERVER["PATH_INFO"] == "/getmovie"){
+            $movie = $_GET["movie"];
             http_response_code(200);
             header("Content-Type: application/json");
-            $result = getAMovie("The Dark Knight"); 
+            $result = getAMovie($movie); 
             echo json_encode([
                 "status" => 200,
                 "message" => "",
